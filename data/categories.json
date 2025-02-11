@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: Locator expected to be visible\nActual value: <element(s) not found> \nCall log:\n  - LocatorAssertions.to_be_visible with timeout 20000ms\n  -   - waiting for locator(\".agenda-item__main__content__title\").filter(has=get_by_text(\"Lobby\"))",
+      "children" : [ {
+        "name" : "test_agenda_is_accessible[chromium]",
+        "uid" : "72737afbf4a9a6e4",
+        "parentUid" : "67c2e60a0bc1cd993a46f10134029f5c",
+        "status" : "failed",
+        "time" : {
+          "start" : 1739307207052,
+          "stop" : 1739307230177,
+          "duration" : 23125
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ "'chromium'" ]
+      } ],
+      "uid" : "67c2e60a0bc1cd993a46f10134029f5c"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ],
+  "name" : "categories"
+}
