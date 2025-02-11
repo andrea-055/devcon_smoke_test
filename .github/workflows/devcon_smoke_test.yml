@@ -1,0 +1,47 @@
+name: Devcon Smoke Test
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # It runs every day at 2 a.m.
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # can be executed in GitHub Actions UI
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository clone
+        uses: actions/checkout@v4
+
+      - name: Install Python és Playwright
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Playwright dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install allure-pytest
+          playwright install
+          playwright install-deps
+
+      - name: Test run using Allure report
+        run: |
+          pytest --alluredir=reports/allure-results --headed
+
+      - name: Generate Allure report
+        uses: simple-elf/allure-report-action@v1
+        with:
+          allure_results: reports/allure-results
+          allure_report: reports/allure-report
+          gh_pages: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Allure riport on GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: reports/allure-report
