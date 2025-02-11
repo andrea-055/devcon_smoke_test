@@ -25,6 +25,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install allure-pytest
+          pip install python-dotenv
           playwright install
           playwright install-deps
 
