@@ -1,8 +1,8 @@
 [ {
-  "buildOrder" : 11,
-  "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/11",
+  "buildOrder" : 12,
+  "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/12",
   "reportName" : "Allure Report with history",
   "data" : {
-    "duration" : 66737
+    "duration" : 64720
   }
 } ]

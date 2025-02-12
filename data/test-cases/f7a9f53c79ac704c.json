@@ -1,11 +1,11 @@
 {
-  "uid" : "f68955d16c5a6d14",
+  "uid" : "f7a9f53c79ac704c",
   "name" : "test_base_url",
   "fullName" : "tests.test_config#test_base_url",
   "historyId" : "2e913e16e2c8b3ecf06fc896c139c6b5",
   "time" : {
-    "start" : 1739356518032,
-    "stop" : 1739356518032,
+    "start" : 1739368571174,
+    "stop" : 1739368571174,
     "duration" : 0
   },
   "status" : "passed",
@@ -14,8 +14,8 @@
   "beforeStages" : [ {
     "name" : "pytestconfig",
     "time" : {
-      "start" : 1739356442177,
-      "stop" : 1739356442177,
+      "start" : 1739368503599,
+      "stop" : 1739368503599,
       "duration" : 0
     },
     "status" : "passed",
@@ -29,8 +29,8 @@
   }, {
     "name" : "base_url",
     "time" : {
-      "start" : 1739356518031,
-      "stop" : 1739356518031,
+      "start" : 1739368571173,
+      "stop" : 1739368571173,
       "duration" : 0
     },
     "status" : "passed",
@@ -44,8 +44,8 @@
   }, {
     "name" : "delete_output_dir",
     "time" : {
-      "start" : 1739356442177,
-      "stop" : 1739356442177,
+      "start" : 1739368503599,
+      "stop" : 1739368503599,
       "duration" : 0
     },
     "status" : "passed",
@@ -59,8 +59,8 @@
   }, {
     "name" : "_verify_url",
     "time" : {
-      "start" : 1739356442177,
-      "stop" : 1739356442177,
+      "start" : 1739368503599,
+      "stop" : 1739368503599,
       "duration" : 0
     },
     "status" : "passed",
@@ -76,9 +76,9 @@
     "status" : "passed",
     "steps" : [ ],
     "attachments" : [ {
-      "uid" : "ebafd06ef3d4739d",
+      "uid" : "7bac211191fd299",
       "name" : "stdout",
-      "source" : "ebafd06ef3d4739d.txt",
+      "source" : "7bac211191fd299.txt",
       "type" : "text/plain",
       "size" : 54
     } ],
@@ -97,10 +97,10 @@
     "value" : "test_config"
   }, {
     "name" : "host",
-    "value" : "fv-az1928-378"
+    "value" : "fv-az1671-17"
   }, {
     "name" : "thread",
-    "value" : "6312-MainThread"
+    "value" : "6203-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -124,6 +124,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "f68955d16c5a6d14.json",
+  "source" : "f7a9f53c79ac704c.json",
   "parameterValues" : [ ]
 }
