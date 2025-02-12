@@ -15,7 +15,7 @@ class Profile_Creation(Page):
     
     def open(self):
         self.page.goto(self.URL)
-        self.page.wait_for_function('() => localStorage.username != ""')
+        self.page.wait_for_function('() => localStorage.username != ""', timeout=60000)
 
     def edit_name(self, username: str):
         if self.input_name.is_disabled():

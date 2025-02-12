@@ -23,7 +23,7 @@ load_dotenv()
 @pytest.fixture(scope="session")
 def base_url():
     """Fixture, amely az alapértelmezett környezeti változóból adja vissza az URL-t"""
-    return os.getenv("PYTEST_BASE_URL", "https://default-url.com")
+    return os.getenv("PYTEST_BASE_URL", "https://devcon.buzz")
 
 
 # ------------------------------------------------------------
