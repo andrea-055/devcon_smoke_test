@@ -5,9 +5,9 @@
     "name" : "tests.devcon",
     "statistic" : {
       "failed" : 1,
-      "broken" : 0,
+      "broken" : 2,
       "skipped" : 0,
-      "passed" : 11,
+      "passed" : 9,
       "unknown" : 0,
       "total" : 12
     }
