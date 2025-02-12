@@ -2,9 +2,9 @@
   "name" : "GitHub Actions",
   "type" : "github",
   "url" : "https://andrea-055.github.io/devcon_smoke_test",
-  "buildOrder" : 10,
-  "buildName" : "GitHub Actions Run #13282374761",
-  "buildUrl" : "https://github.com/andrea-055/devcon_smoke_test/actions/runs/13282374761",
+  "buildOrder" : 9,
+  "buildName" : "GitHub Actions Run #13282371022",
+  "buildUrl" : "https://github.com/andrea-055/devcon_smoke_test/actions/runs/13282371022",
   "reportName" : "Allure Report with history",
-  "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/10"
+  "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/9"
 } ]
