@@ -1,53 +1,23 @@
 {
-  "uid" : "ee5eb7a0c23c5e78",
-  "name" : "test_profile_creation_is_accessible_directly[chromium]",
-  "fullName" : "tests.devcon.test_registration#test_profile_creation_is_accessible_directly",
-  "historyId" : "fa4199dd5e98420f7f725b6692484f9c",
+  "uid" : "a9b1e8c6af783dc",
+  "name" : "test_register_with_proposed_name[chromium]",
+  "fullName" : "tests.devcon.test_registration#test_register_with_proposed_name",
+  "historyId" : "3b82ddeb68f010f1c2f9f2122c550607",
   "time" : {
-    "start" : 1739367067455,
-    "stop" : 1739367067509,
-    "duration" : 54
+    "start" : 1739367067824,
+    "stop" : 1739367067879,
+    "duration" : 55
   },
   "status" : "broken",
   "statusMessage" : "playwright._impl._errors.Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://default-url.com/profilecreation\nCall log:\n  - navigating to \"https://default-url.com/profilecreation\", waiting until \"load\"",
-  "statusTrace" : "profile_creation = <[AttributeError(\"'Profile_Creation' object has no attribute '_impl_obj'\") raised in repr()] Profile_Creation object at 0x104eafb30>\n\n    def test_profile_creation_is_accessible_directly(profile_creation: Profile_Creation):\n>       profile_creation.open()\n\ntests/devcon/test_registration.py:21: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\npages/profile_creation.py:17: in open\n    self.page.goto(self.URL)\n.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:9006: in goto\n    self._sync(\n.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:551: in goto\n    return await self._main_frame.goto(**locals_to_params(locals()))\n.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:145: in goto\n    await self._channel.send(\"goto\", locals_to_params(locals()))\n.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:61: in send\n    return await self._connection.wrap_api_call(\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <playwright._impl._connection.Connection object at 0x1028abdd0>, cb = <function Channel.send.<locals>.<lambda> at 0x104eeb4c0>, is_internal = False\n\n    async def wrap_api_call(\n        self, cb: Callable[[], Any], is_internal: bool = False\n    ) -> Any:\n        if self._api_zone.get():\n            return await cb()\n        task = asyncio.current_task(self._loop)\n        st: List[inspect.FrameInfo] = getattr(task, \"__pw_stack__\", inspect.stack())\n        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)\n        self._api_zone.set(parsed_st)\n        try:\n            return await cb()\n        except Exception as error:\n>           raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nE           playwright._impl._errors.Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://default-url.com/profilecreation\nE           Call log:\nE             - navigating to \"https://default-url.com/profilecreation\", waiting until \"load\"\n\n.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:528: Error",
+  "statusTrace" : "profile_creation = <[AttributeError(\"'Profile_Creation' object has no attribute '_impl_obj'\") raised in repr()] Profile_Creation object at 0x104a63a40>\nhome = <[AttributeError(\"'Home' object has no attribute '_impl_obj'\") raised in repr()] Home object at 0x104e13bf0>\nprofile = <[AttributeError(\"'Profile' object has no attribute '_impl_obj'\") raised in repr()] Profile object at 0x104e13c50>\n\n    def test_register_with_proposed_name(profile_creation: Profile_Creation, home: Home, profile: Profile):\n>       profile_creation.open()\n\ntests/devcon/test_registration.py:33: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\npages/profile_creation.py:17: in open\n    self.page.goto(self.URL)\n.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py:9006: in goto\n    self._sync(\n.venv/lib/python3.12/site-packages/playwright/_impl/_page.py:551: in goto\n    return await self._main_frame.goto(**locals_to_params(locals()))\n.venv/lib/python3.12/site-packages/playwright/_impl/_frame.py:145: in goto\n    await self._channel.send(\"goto\", locals_to_params(locals()))\n.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:61: in send\n    return await self._connection.wrap_api_call(\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = <playwright._impl._connection.Connection object at 0x1028abdd0>, cb = <function Channel.send.<locals>.<lambda> at 0x10444af20>, is_internal = False\n\n    async def wrap_api_call(\n        self, cb: Callable[[], Any], is_internal: bool = False\n    ) -> Any:\n        if self._api_zone.get():\n            return await cb()\n        task = asyncio.current_task(self._loop)\n        st: List[inspect.FrameInfo] = getattr(task, \"__pw_stack__\", inspect.stack())\n        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)\n        self._api_zone.set(parsed_st)\n        try:\n            return await cb()\n        except Exception as error:\n>           raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nE           playwright._impl._errors.Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://default-url.com/profilecreation\nE           Call log:\nE             - navigating to \"https://default-url.com/profilecreation\", waiting until \"load\"\n\n.venv/lib/python3.12/site-packages/playwright/_impl/_connection.py:528: Error",
   "flaky" : false,
   "newFailed" : false,
   "beforeStages" : [ {
-    "name" : "context",
-    "time" : {
-      "start" : 1739367067395,
-      "stop" : 1739367067400,
-      "duration" : 5
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
     "name" : "browser_context_args",
     "time" : {
       "start" : 1739367066901,
       "stop" : 1739367066901,
-      "duration" : 0
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "new_context",
-    "time" : {
-      "start" : 1739367067395,
-      "stop" : 1739367067395,
       "duration" : 0
     },
     "status" : "passed",
@@ -104,21 +74,6 @@
     "shouldDisplayMessage" : false,
     "hasContent" : false
   }, {
-    "name" : "_artifacts_recorder",
-    "time" : {
-      "start" : 1739367067395,
-      "stop" : 1739367067395,
-      "duration" : 0
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
     "name" : "browser_type_launch_args",
     "time" : {
       "start" : 1739367066514,
@@ -134,10 +89,40 @@
     "shouldDisplayMessage" : false,
     "hasContent" : false
   }, {
+    "name" : "profile_creation",
+    "time" : {
+      "start" : 1739367067823,
+      "stop" : 1739367067823,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
     "name" : "delete_output_dir",
     "time" : {
       "start" : 1739367066514,
       "stop" : 1739367066514,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "_artifacts_recorder",
+    "time" : {
+      "start" : 1739367067759,
+      "stop" : 1739367067759,
       "duration" : 0
     },
     "status" : "passed",
@@ -166,8 +151,8 @@
   }, {
     "name" : "output_path",
     "time" : {
-      "start" : 1739367067395,
-      "stop" : 1739367067395,
+      "start" : 1739367067759,
+      "stop" : 1739367067759,
       "duration" : 0
     },
     "status" : "passed",
@@ -179,10 +164,25 @@
     "shouldDisplayMessage" : false,
     "hasContent" : false
   }, {
-    "name" : "profile_creation",
+    "name" : "home",
     "time" : {
-      "start" : 1739367067455,
-      "stop" : 1739367067455,
+      "start" : 1739367067823,
+      "stop" : 1739367067823,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "new_context",
+    "time" : {
+      "start" : 1739367067759,
+      "stop" : 1739367067759,
       "duration" : 0
     },
     "status" : "passed",
@@ -224,6 +224,21 @@
     "shouldDisplayMessage" : false,
     "hasContent" : false
   }, {
+    "name" : "profile",
+    "time" : {
+      "start" : 1739367067823,
+      "stop" : 1739367067823,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
     "name" : "_pw_artifacts_folder",
     "time" : {
       "start" : 1739367066896,
@@ -239,11 +254,11 @@
     "shouldDisplayMessage" : false,
     "hasContent" : false
   }, {
-    "name" : "page",
+    "name" : "context",
     "time" : {
-      "start" : 1739367067400,
-      "stop" : 1739367067455,
-      "duration" : 55
+      "start" : 1739367067759,
+      "stop" : 1739367067764,
+      "duration" : 5
     },
     "status" : "passed",
     "steps" : [ ],
@@ -283,13 +298,12 @@
     "attachmentsCount" : 0,
     "shouldDisplayMessage" : false,
     "hasContent" : false
-  } ],
-  "afterStages" : [ {
-    "name" : "new_context::0",
+  }, {
+    "name" : "page",
     "time" : {
-      "start" : 1739367067576,
-      "stop" : 1739367067581,
-      "duration" : 5
+      "start" : 1739367067764,
+      "stop" : 1739367067823,
+      "duration" : 59
     },
     "status" : "passed",
     "steps" : [ ],
@@ -299,11 +313,12 @@
     "attachmentsCount" : 0,
     "shouldDisplayMessage" : false,
     "hasContent" : false
-  }, {
+  } ],
+  "afterStages" : [ {
     "name" : "_artifacts_recorder::0",
     "time" : {
-      "start" : 1739367067582,
-      "stop" : 1739367067582,
+      "start" : 1739367067951,
+      "stop" : 1739367067951,
       "duration" : 0
     },
     "status" : "passed",
@@ -320,6 +335,21 @@
       "start" : 1739367068132,
       "stop" : 1739367068247,
       "duration" : 115
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "new_context::0",
+    "time" : {
+      "start" : 1739367067945,
+      "stop" : 1739367067950,
+      "duration" : 5
     },
     "status" : "passed",
     "steps" : [ ],
@@ -396,6 +426,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "ee5eb7a0c23c5e78.json",
+  "source" : "a9b1e8c6af783dc.json",
   "parameterValues" : [ "'chromium'" ]
 }

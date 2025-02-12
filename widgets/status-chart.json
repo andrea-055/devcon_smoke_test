@@ -1,130 +1,130 @@
 [ {
-  "uid" : "6be17d73642fc233",
-  "name" : "test_onboarding_steps_reverse[chromium]",
-  "time" : {
-    "start" : 1739368551431,
-    "stop" : 1739368554441,
-    "duration" : 3010
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "cc633da4b4ccf2ad",
-  "name" : "test_tc_confirmed_enables_profile_creation[chromium]",
-  "time" : {
-    "start" : 1739368557394,
-    "stop" : 1739368559225,
-    "duration" : 1831
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "e30544fa1e5f1c9b",
-  "name" : "test_register_with_custom_name[chromium]",
-  "time" : {
-    "start" : 1739368568691,
-    "stop" : 1739368571161,
-    "duration" : 2470
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "24e19a015e607428",
-  "name" : "test_register_with_proposed_name[chromium]",
-  "time" : {
-    "start" : 1739368565358,
-    "stop" : 1739368568644,
-    "duration" : 3286
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "93850dbe0b83d012",
-  "name" : "test_profile_creation_is_accessible_directly[chromium]",
-  "time" : {
-    "start" : 1739368559271,
-    "stop" : 1739368562388,
-    "duration" : 3117
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "66ad2c15c0275b50",
-  "name" : "test_spaces_is_accessible[chromium]",
-  "time" : {
-    "start" : 1739368530332,
-    "stop" : 1739368533300,
-    "duration" : 2968
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "b3fd5605b3573c75",
-  "name" : "test_app_is_accessible[chromium]",
-  "time" : {
-    "start" : 1739368533346,
-    "stop" : 1739368541165,
-    "duration" : 7819
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "f7a9f53c79ac704c",
-  "name" : "test_base_url",
-  "time" : {
-    "start" : 1739368571174,
-    "stop" : 1739368571174,
-    "duration" : 0
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "43e5a7ca580669cb",
+  "uid" : "88088a60fe4cd619",
   "name" : "test_redirect_unregistered[chromium]",
   "time" : {
-    "start" : 1739368541210,
-    "stop" : 1739368549312,
-    "duration" : 8102
+    "start" : 1739369031549,
+    "stop" : 1739369039917,
+    "duration" : 8368
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "badd16e1e656b9af",
+  "uid" : "4a9a50ba98942658",
+  "name" : "test_register_with_proposed_name[chromium]",
+  "time" : {
+    "start" : 1739369053959,
+    "stop" : 1739369056311,
+    "duration" : 2352
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "62aca7dc62339402",
+  "name" : "test_app_is_accessible[chromium]",
+  "time" : {
+    "start" : 1739369024681,
+    "stop" : 1739369031501,
+    "duration" : 6820
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "688cf27d5519ad1e",
+  "name" : "test_tc_unconfirmed_restricts_profile_creation[chromium]",
+  "time" : {
+    "start" : 1739369045446,
+    "stop" : 1739369047371,
+    "duration" : 1925
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "22e5f49ea23698ef",
+  "name" : "test_tc_confirmed_enables_profile_creation[chromium]",
+  "time" : {
+    "start" : 1739369047418,
+    "stop" : 1739369049359,
+    "duration" : 1941
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "7379a2e87e0163e7",
+  "name" : "test_onboarding_steps_normal[chromium]",
+  "time" : {
+    "start" : 1739369039964,
+    "stop" : 1739369043196,
+    "duration" : 3232
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e931cff1e56d52f",
+  "name" : "test_onboarding_steps_reverse[chromium]",
+  "time" : {
+    "start" : 1739369043246,
+    "stop" : 1739369045392,
+    "duration" : 2146
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "fd479de8eb7f922c",
+  "name" : "test_profile_creation_is_accessible_directly[chromium]",
+  "time" : {
+    "start" : 1739369049405,
+    "stop" : 1739369051671,
+    "duration" : 2266
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "8b15d3e1c9e099f0",
+  "name" : "test_spaces_is_accessible[chromium]",
+  "time" : {
+    "start" : 1739369022568,
+    "stop" : 1739369024633,
+    "duration" : 2065
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4a2020182c48c58a",
+  "name" : "test_username_proposal[chromium]",
+  "time" : {
+    "start" : 1739369051717,
+    "stop" : 1739369053911,
+    "duration" : 2194
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "22a0843f9bcce663",
+  "name" : "test_register_with_custom_name[chromium]",
+  "time" : {
+    "start" : 1739369056357,
+    "stop" : 1739369058695,
+    "duration" : 2338
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "edaf3b66eca8227",
   "name" : "test_agenda_is_accessible[chromium]",
   "time" : {
-    "start" : 1739368506454,
-    "stop" : 1739368530241,
-    "duration" : 23787
+    "start" : 1739369000406,
+    "stop" : 1739369022473,
+    "duration" : 22067
   },
   "status" : "failed",
   "severity" : "normal"
 }, {
-  "uid" : "859799cadf7a61a9",
-  "name" : "test_tc_unconfirmed_restricts_profile_creation[chromium]",
+  "uid" : "f8d4fcfc9ac62c6c",
+  "name" : "test_base_url",
   "time" : {
-    "start" : 1739368554489,
-    "stop" : 1739368557347,
-    "duration" : 2858
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "3f93bacdc9903642",
-  "name" : "test_onboarding_steps_normal[chromium]",
-  "time" : {
-    "start" : 1739368549358,
-    "stop" : 1739368551381,
-    "duration" : 2023
-  },
-  "status" : "passed",
-  "severity" : "normal"
-}, {
-  "uid" : "aeb32e4b3dc2dd2e",
-  "name" : "test_username_proposal[chromium]",
-  "time" : {
-    "start" : 1739368562434,
-    "stop" : 1739368565312,
-    "duration" : 2878
+    "start" : 1739369058707,
+    "stop" : 1739369058707,
+    "duration" : 0
   },
   "status" : "passed",
   "severity" : "normal"

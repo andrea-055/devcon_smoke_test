@@ -1,6 +1,6 @@
 [ {
-  "buildOrder" : 12,
-  "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/12",
+  "buildOrder" : 13,
+  "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/13",
   "reportName" : "Allure Report with history",
   "data" : {
     "failed" : 1,
