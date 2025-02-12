@@ -1,22 +1,22 @@
 {
-  "uid" : "769827a963e1fd5e",
+  "uid" : "cbdbf68637ddb356",
   "name" : "test_base_url",
   "fullName" : "tests.test_config#test_base_url",
   "historyId" : "2e913e16e2c8b3ecf06fc896c139c6b5",
   "time" : {
-    "start" : 1739328656168,
-    "stop" : 1739328656168,
+    "start" : 1739353312606,
+    "stop" : 1739353312606,
     "duration" : 0
   },
   "status" : "passed",
   "flaky" : false,
   "newFailed" : false,
   "beforeStages" : [ {
-    "name" : "pytestconfig",
+    "name" : "_verify_url",
     "time" : {
-      "start" : 1739328524863,
-      "stop" : 1739328524864,
-      "duration" : 1
+      "start" : 1739353247662,
+      "stop" : 1739353247662,
+      "duration" : 0
     },
     "status" : "passed",
     "steps" : [ ],
@@ -29,8 +29,23 @@
   }, {
     "name" : "base_url",
     "time" : {
-      "start" : 1739328656168,
-      "stop" : 1739328656168,
+      "start" : 1739353312606,
+      "stop" : 1739353312606,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "pytestconfig",
+    "time" : {
+      "start" : 1739353247662,
+      "stop" : 1739353247662,
       "duration" : 0
     },
     "status" : "passed",
@@ -44,23 +59,8 @@
   }, {
     "name" : "delete_output_dir",
     "time" : {
-      "start" : 1739328524864,
-      "stop" : 1739328524864,
-      "duration" : 0
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "_verify_url",
-    "time" : {
-      "start" : 1739328524864,
-      "stop" : 1739328524864,
+      "start" : 1739353247663,
+      "stop" : 1739353247663,
       "duration" : 0
     },
     "status" : "passed",
@@ -76,9 +76,9 @@
     "status" : "passed",
     "steps" : [ ],
     "attachments" : [ {
-      "uid" : "588a77229fd3ef9e",
+      "uid" : "8ed4bd73a4e1828a",
       "name" : "stdout",
-      "source" : "588a77229fd3ef9e.txt",
+      "source" : "8ed4bd73a4e1828a.txt",
       "type" : "text/plain",
       "size" : 54
     } ],
@@ -97,10 +97,10 @@
     "value" : "test_config"
   }, {
     "name" : "host",
-    "value" : "fv-az1333-513"
+    "value" : "fv-az1306-256"
   }, {
     "name" : "thread",
-    "value" : "6224-MainThread"
+    "value" : "6279-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -124,6 +124,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "769827a963e1fd5e.json",
+  "source" : "cbdbf68637ddb356.json",
   "parameterValues" : [ ]
 }
