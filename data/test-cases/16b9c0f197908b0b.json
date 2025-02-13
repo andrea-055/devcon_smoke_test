@@ -1,11 +1,11 @@
 {
-  "uid" : "2daf1f1a5f4dbc5e",
+  "uid" : "16b9c0f197908b0b",
   "name" : "test_base_url",
   "fullName" : "tests.test_config#test_base_url",
   "historyId" : "2e913e16e2c8b3ecf06fc896c139c6b5",
   "time" : {
-    "start" : 1739449428557,
-    "stop" : 1739449428557,
+    "start" : 1739450975681,
+    "stop" : 1739450975681,
     "duration" : 0
   },
   "status" : "passed",
@@ -14,8 +14,8 @@
   "beforeStages" : [ {
     "name" : "pytestconfig",
     "time" : {
-      "start" : 1739449359879,
-      "stop" : 1739449359879,
+      "start" : 1739450889969,
+      "stop" : 1739450889969,
       "duration" : 0
     },
     "status" : "passed",
@@ -29,23 +29,8 @@
   }, {
     "name" : "base_url",
     "time" : {
-      "start" : 1739449428557,
-      "stop" : 1739449428557,
-      "duration" : 0
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "_verify_url",
-    "time" : {
-      "start" : 1739449359880,
-      "stop" : 1739449359880,
+      "start" : 1739450975680,
+      "stop" : 1739450975680,
       "duration" : 0
     },
     "status" : "passed",
@@ -59,8 +44,23 @@
   }, {
     "name" : "delete_output_dir",
     "time" : {
-      "start" : 1739449359880,
-      "stop" : 1739449359880,
+      "start" : 1739450889969,
+      "stop" : 1739450889969,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "_verify_url",
+    "time" : {
+      "start" : 1739450889969,
+      "stop" : 1739450889969,
       "duration" : 0
     },
     "status" : "passed",
@@ -76,9 +76,9 @@
     "status" : "passed",
     "steps" : [ ],
     "attachments" : [ {
-      "uid" : "37c845eee2e1b11d",
+      "uid" : "ba27681f4d31c33a",
       "name" : "stdout",
-      "source" : "37c845eee2e1b11d.txt",
+      "source" : "ba27681f4d31c33a.txt",
       "type" : "text/plain",
       "size" : 54
     } ],
@@ -97,10 +97,10 @@
     "value" : "test_config"
   }, {
     "name" : "host",
-    "value" : "fv-az1376-484"
+    "value" : "fv-az1316-159"
   }, {
     "name" : "thread",
-    "value" : "6252-MainThread"
+    "value" : "6311-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -124,6 +124,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "2daf1f1a5f4dbc5e.json",
+  "source" : "16b9c0f197908b0b.json",
   "parameterValues" : [ ]
 }

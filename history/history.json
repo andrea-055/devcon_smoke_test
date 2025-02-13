@@ -1,5 +1,5 @@
 {
-  "eba47253b4411070471f6d6729208616" : {
+  "2e913e16e2c8b3ecf06fc896c139c6b5" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -9,13 +9,13 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "5a86408a037e0999",
-      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/17/#testresult/5a86408a037e0999",
+      "uid" : "16b9c0f197908b0b",
+      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/18/#testresult/16b9c0f197908b0b",
       "status" : "passed",
       "time" : {
-        "start" : 1739449425575,
-        "stop" : 1739449428545,
-        "duration" : 2970
+        "start" : 1739450975681,
+        "stop" : 1739450975681,
+        "duration" : 0
       }
     } ]
   },
@@ -29,17 +29,17 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "c99c389c5efa28fe",
-      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/17/#testresult/c99c389c5efa28fe",
+      "uid" : "82d76fa938d9e336",
+      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/18/#testresult/82d76fa938d9e336",
       "status" : "passed",
       "time" : {
-        "start" : 1739449415953,
-        "stop" : 1739449419639,
-        "duration" : 3686
+        "start" : 1739450963093,
+        "stop" : 1739450966114,
+        "duration" : 3021
       }
     } ]
   },
-  "2e913e16e2c8b3ecf06fc896c139c6b5" : {
+  "eba47253b4411070471f6d6729208616" : {
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
@@ -49,34 +49,13 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "2daf1f1a5f4dbc5e",
-      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/17/#testresult/2daf1f1a5f4dbc5e",
+      "uid" : "e4c91e725fa71f5b",
+      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/18/#testresult/e4c91e725fa71f5b",
       "status" : "passed",
       "time" : {
-        "start" : 1739449428557,
-        "stop" : 1739449428557,
-        "duration" : 0
-      }
-    } ]
-  },
-  "d2733631e88a27a2defd0d894189627f" : {
-    "statistic" : {
-      "failed" : 1,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 0,
-      "unknown" : 0,
-      "total" : 1
-    },
-    "items" : [ {
-      "uid" : "b1ba2a51d36f0ca6",
-      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/17/#testresult/b1ba2a51d36f0ca6",
-      "status" : "failed",
-      "statusDetails" : "AssertionError: Locator expected to be visible\nActual value: <element(s) not found> \nCall log:\n  - LocatorAssertions.to_be_visible with timeout 20000ms\n  -   - waiting for locator(\".agenda-item__main__content__title\").filter(has=get_by_text(\"Lobby\"))",
-      "time" : {
-        "start" : 1739449363950,
-        "stop" : 1739449387306,
-        "duration" : 23356
+        "start" : 1739450972515,
+        "stop" : 1739450975669,
+        "duration" : 3154
       }
     } ]
   },
@@ -90,33 +69,34 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "d408c1ff87e0c2e7",
-      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/17/#testresult/d408c1ff87e0c2e7",
+      "uid" : "6ef07fba5404cdd2",
+      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/18/#testresult/6ef07fba5404cdd2",
       "status" : "passed",
       "time" : {
-        "start" : 1739449419683,
-        "stop" : 1739449422496,
-        "duration" : 2813
+        "start" : 1739450966157,
+        "stop" : 1739450969255,
+        "duration" : 3098
       }
     } ]
   },
-  "b991e5bf925a8ef912807b234bf56625" : {
+  "d2733631e88a27a2defd0d894189627f" : {
     "statistic" : {
-      "failed" : 0,
+      "failed" : 1,
       "broken" : 0,
       "skipped" : 0,
-      "passed" : 1,
+      "passed" : 0,
       "unknown" : 0,
       "total" : 1
     },
     "items" : [ {
-      "uid" : "377c58100368d709",
-      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/17/#testresult/377c58100368d709",
-      "status" : "passed",
+      "uid" : "20a6024087dcf411",
+      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/18/#testresult/20a6024087dcf411",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: Locator expected to be visible\nActual value: <element(s) not found> \nCall log:\n  - LocatorAssertions.to_be_visible with timeout 20000ms\n  -   - waiting for locator(\".agenda-item__main__content__title\").filter(has=get_by_text(\"Lobby\"))",
       "time" : {
-        "start" : 1739449406713,
-        "stop" : 1739449409314,
-        "duration" : 2601
+        "start" : 1739450909440,
+        "stop" : 1739450932282,
+        "duration" : 22842
       }
     } ]
   },
@@ -130,13 +110,33 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "2e9d3cc71af805f",
-      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/17/#testresult/2e9d3cc71af805f",
+      "uid" : "def7252e9b49f8d4",
+      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/18/#testresult/def7252e9b49f8d4",
       "status" : "passed",
       "time" : {
-        "start" : 1739449422540,
-        "stop" : 1739449425529,
-        "duration" : 2989
+        "start" : 1739450969300,
+        "stop" : 1739450972470,
+        "duration" : 3170
+      }
+    } ]
+  },
+  "b991e5bf925a8ef912807b234bf56625" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "d8ceab89270c146d",
+      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/18/#testresult/d8ceab89270c146d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1739450951298,
+        "stop" : 1739450954304,
+        "duration" : 3006
       }
     } ]
   },
@@ -150,13 +150,13 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "93c58a99288a7782",
-      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/17/#testresult/93c58a99288a7782",
+      "uid" : "2926b0e4b1803eae",
+      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/18/#testresult/2926b0e4b1803eae",
       "status" : "passed",
       "time" : {
-        "start" : 1739449409364,
-        "stop" : 1739449411110,
-        "duration" : 1746
+        "start" : 1739450954351,
+        "stop" : 1739450958333,
+        "duration" : 3982
       }
     } ]
   },
@@ -170,13 +170,13 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "e3f80512e46dd00a",
-      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/17/#testresult/e3f80512e46dd00a",
+      "uid" : "ba476756a408113d",
+      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/18/#testresult/ba476756a408113d",
       "status" : "passed",
       "time" : {
-        "start" : 1739449413443,
-        "stop" : 1739449415909,
-        "duration" : 2466
+        "start" : 1739450960246,
+        "stop" : 1739450963050,
+        "duration" : 2804
       }
     } ]
   },
@@ -190,13 +190,13 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "80f099236e4c13e",
-      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/17/#testresult/80f099236e4c13e",
+      "uid" : "5fb5fbc2214f3f6",
+      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/18/#testresult/5fb5fbc2214f3f6",
       "status" : "passed",
       "time" : {
-        "start" : 1739449399101,
-        "stop" : 1739449406668,
-        "duration" : 7567
+        "start" : 1739450944125,
+        "stop" : 1739450951254,
+        "duration" : 7129
       }
     } ]
   },
@@ -210,13 +210,13 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "c177512b900708c6",
-      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/17/#testresult/c177512b900708c6",
+      "uid" : "c18fa9b2f03abd6b",
+      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/18/#testresult/c18fa9b2f03abd6b",
       "status" : "passed",
       "time" : {
-        "start" : 1739449387388,
-        "stop" : 1739449390733,
-        "duration" : 3345
+        "start" : 1739450932373,
+        "stop" : 1739450936275,
+        "duration" : 3902
       }
     } ]
   },
@@ -230,13 +230,13 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "d7eaa50f5a98bc7e",
-      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/17/#testresult/d7eaa50f5a98bc7e",
+      "uid" : "5f22e80c68571569",
+      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/18/#testresult/5f22e80c68571569",
       "status" : "passed",
       "time" : {
-        "start" : 1739449411160,
-        "stop" : 1739449413397,
-        "duration" : 2237
+        "start" : 1739450958377,
+        "stop" : 1739450960199,
+        "duration" : 1822
       }
     } ]
   },
@@ -250,13 +250,13 @@
       "total" : 1
     },
     "items" : [ {
-      "uid" : "b1587d3ef3695449",
-      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/17/#testresult/b1587d3ef3695449",
+      "uid" : "38a27a208f11d19e",
+      "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/18/#testresult/38a27a208f11d19e",
       "status" : "passed",
       "time" : {
-        "start" : 1739449390778,
-        "stop" : 1739449399058,
-        "duration" : 8280
+        "start" : 1739450936320,
+        "stop" : 1739450944081,
+        "duration" : 7761
       }
     } ]
   }
