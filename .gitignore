@@ -185,3 +185,8 @@ cython_debug/
 
 # Descktop Service Store
 .DS_Store
+
+#Allure local reports
+reports/allure-results/
+reports/allure-report/
+allure-report/
