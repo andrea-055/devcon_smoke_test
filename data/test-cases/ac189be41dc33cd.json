@@ -1,97 +1,22 @@
 {
-  "uid" : "5f22e80c68571569",
-  "name" : "test_tc_unconfirmed_restricts_profile_creation[chromium]",
-  "fullName" : "tests.devcon.test_registration#test_tc_unconfirmed_restricts_profile_creation",
-  "historyId" : "c18d22b9636b625e20c1960d06a73688",
+  "uid" : "ac189be41dc33cd",
+  "name" : "test_register_with_custom_name[chromium]",
+  "fullName" : "tests.devcon.test_registration#test_register_with_custom_name",
+  "historyId" : "eba47253b4411070471f6d6729208616",
   "time" : {
-    "start" : 1739450958377,
-    "stop" : 1739450960199,
-    "duration" : 1822
+    "start" : 1739501397470,
+    "stop" : 1739501399887,
+    "duration" : 2417
   },
   "status" : "passed",
   "flaky" : false,
   "newFailed" : false,
   "beforeStages" : [ {
-    "name" : "pytestconfig",
+    "name" : "home",
     "time" : {
-      "start" : 1739450889969,
-      "stop" : 1739450889969,
+      "start" : 1739501397469,
+      "stop" : 1739501397469,
       "duration" : 0
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "browser_type_launch_args",
-    "time" : {
-      "start" : 1739450889969,
-      "stop" : 1739450889969,
-      "duration" : 0
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "device",
-    "time" : {
-      "start" : 1739450903784,
-      "stop" : 1739450903784,
-      "duration" : 0
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "context",
-    "time" : {
-      "start" : 1739450958344,
-      "stop" : 1739450958348,
-      "duration" : 4
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "base_url",
-    "time" : {
-      "start" : 1739450975680,
-      "stop" : 1739450975680,
-      "duration" : 0
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "browser",
-    "time" : {
-      "start" : 1739450890203,
-      "stop" : 1739450903784,
-      "duration" : 13581
     },
     "status" : "passed",
     "steps" : [ ],
@@ -104,9 +29,9 @@
   }, {
     "name" : "playwright",
     "time" : {
-      "start" : 1739450889969,
-      "stop" : 1739450890203,
-      "duration" : 234
+      "start" : 1739501337352,
+      "stop" : 1739501337600,
+      "duration" : 248
     },
     "status" : "passed",
     "steps" : [ ],
@@ -117,71 +42,11 @@
     "shouldDisplayMessage" : false,
     "hasContent" : false
   }, {
-    "name" : "_pw_artifacts_folder",
+    "name" : "browser_type_launch_args",
     "time" : {
-      "start" : 1739450903784,
-      "stop" : 1739450903785,
-      "duration" : 1
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "delete_output_dir",
-    "time" : {
-      "start" : 1739450889969,
-      "stop" : 1739450889969,
+      "start" : 1739501337352,
+      "stop" : 1739501337352,
       "duration" : 0
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "_artifacts_recorder",
-    "time" : {
-      "start" : 1739450958344,
-      "stop" : 1739450958344,
-      "duration" : 0
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "terms_and_conditions",
-    "time" : {
-      "start" : 1739450958377,
-      "stop" : 1739450958377,
-      "duration" : 0
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
-    "name" : "page",
-    "time" : {
-      "start" : 1739450958348,
-      "stop" : 1739450958377,
-      "duration" : 29
     },
     "status" : "passed",
     "steps" : [ ],
@@ -194,8 +59,8 @@
   }, {
     "name" : "browser_type",
     "time" : {
-      "start" : 1739450890203,
-      "stop" : 1739450890203,
+      "start" : 1739501337600,
+      "stop" : 1739501337600,
       "duration" : 0
     },
     "status" : "passed",
@@ -207,11 +72,11 @@
     "shouldDisplayMessage" : false,
     "hasContent" : false
   }, {
-    "name" : "_verify_url",
+    "name" : "_pw_artifacts_folder",
     "time" : {
-      "start" : 1739450889969,
-      "stop" : 1739450889969,
-      "duration" : 0
+      "start" : 1739501337880,
+      "stop" : 1739501337881,
+      "duration" : 1
     },
     "status" : "passed",
     "steps" : [ ],
@@ -222,10 +87,10 @@
     "shouldDisplayMessage" : false,
     "hasContent" : false
   }, {
-    "name" : "launch_browser",
+    "name" : "pytestconfig",
     "time" : {
-      "start" : 1739450890203,
-      "stop" : 1739450890203,
+      "start" : 1739501337351,
+      "stop" : 1739501337351,
       "duration" : 0
     },
     "status" : "passed",
@@ -239,8 +104,113 @@
   }, {
     "name" : "browser_context_args",
     "time" : {
-      "start" : 1739450903785,
-      "stop" : 1739450903785,
+      "start" : 1739501337881,
+      "stop" : 1739501337881,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "context",
+    "time" : {
+      "start" : 1739501397434,
+      "stop" : 1739501397438,
+      "duration" : 4
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "output_path",
+    "time" : {
+      "start" : 1739501397434,
+      "stop" : 1739501397434,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "profile",
+    "time" : {
+      "start" : 1739501397469,
+      "stop" : 1739501397469,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "_verify_url",
+    "time" : {
+      "start" : 1739501337352,
+      "stop" : 1739501337352,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "delete_output_dir",
+    "time" : {
+      "start" : 1739501337352,
+      "stop" : 1739501337352,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "browser",
+    "time" : {
+      "start" : 1739501337601,
+      "stop" : 1739501337880,
+      "duration" : 279
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "device",
+    "time" : {
+      "start" : 1739501337880,
+      "stop" : 1739501337880,
       "duration" : 0
     },
     "status" : "passed",
@@ -254,8 +224,23 @@
   }, {
     "name" : "new_context",
     "time" : {
-      "start" : 1739450958344,
-      "stop" : 1739450958344,
+      "start" : 1739501397434,
+      "stop" : 1739501397434,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "profile_creation",
+    "time" : {
+      "start" : 1739501397469,
+      "stop" : 1739501397469,
       "duration" : 0
     },
     "status" : "passed",
@@ -269,8 +254,8 @@
   }, {
     "name" : "base_url",
     "time" : {
-      "start" : 1739450958344,
-      "stop" : 1739450958344,
+      "start" : 1739501384579,
+      "stop" : 1739501384579,
       "duration" : 0
     },
     "status" : "passed",
@@ -282,10 +267,55 @@
     "shouldDisplayMessage" : false,
     "hasContent" : false
   }, {
-    "name" : "output_path",
+    "name" : "_artifacts_recorder",
     "time" : {
-      "start" : 1739450958344,
-      "stop" : 1739450958344,
+      "start" : 1739501397434,
+      "stop" : 1739501397434,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "page",
+    "time" : {
+      "start" : 1739501397438,
+      "stop" : 1739501397469,
+      "duration" : 31
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "launch_browser",
+    "time" : {
+      "start" : 1739501337600,
+      "stop" : 1739501337600,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "base_url",
+    "time" : {
+      "start" : 1739501399898,
+      "stop" : 1739501399898,
       "duration" : 0
     },
     "status" : "passed",
@@ -298,26 +328,11 @@
     "hasContent" : false
   } ],
   "afterStages" : [ {
-    "name" : "browser::0",
-    "time" : {
-      "start" : 1739450975683,
-      "stop" : 1739450976734,
-      "duration" : 1051
-    },
-    "status" : "passed",
-    "steps" : [ ],
-    "attachments" : [ ],
-    "parameters" : [ ],
-    "stepsCount" : 0,
-    "attachmentsCount" : 0,
-    "shouldDisplayMessage" : false,
-    "hasContent" : false
-  }, {
     "name" : "playwright::0",
     "time" : {
-      "start" : 1739450976735,
-      "stop" : 1739450976741,
-      "duration" : 6
+      "start" : 1739501400044,
+      "stop" : 1739501400051,
+      "duration" : 7
     },
     "status" : "passed",
     "steps" : [ ],
@@ -330,8 +345,8 @@
   }, {
     "name" : "_pw_artifacts_folder::0",
     "time" : {
-      "start" : 1739450975682,
-      "stop" : 1739450975682,
+      "start" : 1739501399900,
+      "stop" : 1739501399900,
       "duration" : 0
     },
     "status" : "passed",
@@ -343,11 +358,11 @@
     "shouldDisplayMessage" : false,
     "hasContent" : false
   }, {
-    "name" : "_artifacts_recorder::0",
+    "name" : "browser::0",
     "time" : {
-      "start" : 1739450960209,
-      "stop" : 1739450960209,
-      "duration" : 0
+      "start" : 1739501399901,
+      "stop" : 1739501400042,
+      "duration" : 141
     },
     "status" : "passed",
     "steps" : [ ],
@@ -360,9 +375,24 @@
   }, {
     "name" : "new_context::0",
     "time" : {
-      "start" : 1739450960200,
-      "stop" : 1739450960209,
-      "duration" : 9
+      "start" : 1739501399888,
+      "stop" : 1739501399896,
+      "duration" : 8
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "_artifacts_recorder::0",
+    "time" : {
+      "start" : 1739501399897,
+      "stop" : 1739501399897,
+      "duration" : 0
     },
     "status" : "passed",
     "steps" : [ ],
@@ -381,10 +411,10 @@
     "value" : "test_registration"
   }, {
     "name" : "host",
-    "value" : "fv-az1316-159"
+    "value" : "fv-az1390-170"
   }, {
     "name" : "thread",
-    "value" : "6311-MainThread"
+    "value" : "6228-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -411,6 +441,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "5f22e80c68571569.json",
+  "source" : "ac189be41dc33cd.json",
   "parameterValues" : [ "'chromium'" ]
 }
