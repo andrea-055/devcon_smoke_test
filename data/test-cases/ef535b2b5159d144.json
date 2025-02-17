@@ -1,21 +1,21 @@
 {
-  "uid" : "7e352fd67dc55ae",
+  "uid" : "ef535b2b5159d144",
   "name" : "test_base_url",
   "fullName" : "tests.test_config#test_base_url",
   "historyId" : "2e913e16e2c8b3ecf06fc896c139c6b5",
   "time" : {
-    "start" : 1739760811587,
-    "stop" : 1739760811587,
+    "start" : 1739795178338,
+    "stop" : 1739795178338,
     "duration" : 0
   },
   "status" : "passed",
   "flaky" : false,
   "newFailed" : false,
   "beforeStages" : [ {
-    "name" : "delete_output_dir",
+    "name" : "base_url",
     "time" : {
-      "start" : 1739760749451,
-      "stop" : 1739760749451,
+      "start" : 1739795178338,
+      "stop" : 1739795178338,
       "duration" : 0
     },
     "status" : "passed",
@@ -29,8 +29,8 @@
   }, {
     "name" : "pytestconfig",
     "time" : {
-      "start" : 1739760749451,
-      "stop" : 1739760749451,
+      "start" : 1739795115229,
+      "stop" : 1739795115229,
       "duration" : 0
     },
     "status" : "passed",
@@ -44,8 +44,8 @@
   }, {
     "name" : "_verify_url",
     "time" : {
-      "start" : 1739760749451,
-      "stop" : 1739760749451,
+      "start" : 1739795115229,
+      "stop" : 1739795115229,
       "duration" : 0
     },
     "status" : "passed",
@@ -57,11 +57,11 @@
     "shouldDisplayMessage" : false,
     "hasContent" : false
   }, {
-    "name" : "base_url",
+    "name" : "delete_output_dir",
     "time" : {
-      "start" : 1739760811586,
-      "stop" : 1739760811587,
-      "duration" : 1
+      "start" : 1739795115229,
+      "stop" : 1739795115229,
+      "duration" : 0
     },
     "status" : "passed",
     "steps" : [ ],
@@ -76,11 +76,11 @@
     "status" : "passed",
     "steps" : [ ],
     "attachments" : [ {
-      "uid" : "5138746df3ee4a9f",
+      "uid" : "2c2c68af62c6077a",
       "name" : "stdout",
-      "source" : "5138746df3ee4a9f.txt",
+      "source" : "2c2c68af62c6077a.txt",
       "type" : "text/plain",
-      "size" : 54
+      "size" : 37
     } ],
     "parameters" : [ ],
     "stepsCount" : 0,
@@ -97,10 +97,10 @@
     "value" : "test_config"
   }, {
     "name" : "host",
-    "value" : "fv-az1308-79"
+    "value" : "fv-az1721-502"
   }, {
     "name" : "thread",
-    "value" : "6205-MainThread"
+    "value" : "6209-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -124,6 +124,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "7e352fd67dc55ae.json",
+  "source" : "ef535b2b5159d144.json",
   "parameterValues" : [ ]
 }
