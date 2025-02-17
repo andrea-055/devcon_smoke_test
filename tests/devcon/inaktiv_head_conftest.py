@@ -1,5 +1,5 @@
 
-# ez NEM headless
+
 
 import os
 import pytest
@@ -15,14 +15,12 @@ from pages.spaces import Spaces
 from pages.terms_and_conditions import *
 from pages.profile import *
 
-# ------------------------------------------------------------
-# Környezeti változók beolvasása az `.env` fájlból
-# ------------------------------------------------------------
+
 load_dotenv()
 
 @pytest.fixture(scope="session")
 def base_url():
-    """Fixture, amely a környezeti változóból adja vissza az URL-t"""
+
     return os.getenv("PYTEST_BASE_URL", "https://default-url.com")
 
 
@@ -32,12 +30,12 @@ def base_url():
 
 @pytest.fixture(scope="session")
 def browser(playwright):
-    """Létrehoz egy Playwright böngészőt, amely vizuálisan is fut"""
+
     return playwright.chromium.launch(headless=False, slow_mo=500)
 
 @pytest.fixture(scope='function')
 def page(request, browser, base_url) -> Page:
-    """Létrehoz egy Playwright oldalt a tesztekhez, vizuális (headed) módban"""
+
     reg_marker = request.node.get_closest_marker('registered')
     file_path = Path('.auth/storage.json')
 
@@ -52,18 +50,16 @@ def page(request, browser, base_url) -> Page:
     return context.new_page()
 
 
-# ------------------------------------------------------------
-# Autentikációs állapot kezelése (`.auth/storage.json`)
-# ------------------------------------------------------------
+
 
 def create_auth_file(file_path):
-    """Létrehoz egy üres autentikációs fájlt, ha nem létezik"""
+
     Path('.auth').mkdir(parents=True, exist_ok=True)
     with open(file_path, 'w') as file:
         file.write('')
 
 def create_auth_content(browser, base_url):
-    """Létrehozza az autentikációs állapotot és elmenti a `.auth/storage.json`-be"""
+
     page = browser.new_page(base_url=base_url)
     page.goto('profilecreation')
     page.get_by_role('button', name='Start Building Your Community').click()
@@ -72,9 +68,7 @@ def create_auth_content(browser, base_url):
     page.close()
 
 
-# ------------------------------------------------------------
-# DevCon oldal Page Object Model (POM) fixture-jei
-# ------------------------------------------------------------
+
 
 @pytest.fixture(scope='function')
 def home(page):
