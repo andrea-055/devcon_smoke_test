@@ -24,9 +24,7 @@ def base_url():
     return os.getenv("PYTEST_BASE_URL", "https://default-url.com")
 
 
-# ------------------------------------------------------------
-# Playwright böngésző beállítása (vizuális mód, lassítás)
-# ------------------------------------------------------------
+
 
 @pytest.fixture(scope="session")
 def browser(playwright):
