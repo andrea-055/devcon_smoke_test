@@ -6,13 +6,13 @@
       "name" : "AssertionError: Locator expected to be visible\nActual value: <element(s) not found> \nCall log:\n  - LocatorAssertions.to_be_visible with timeout 20000ms\n  -   - waiting for locator(\".agenda-item__main__content__title\").filter(has=get_by_text(\"Lobby\"))",
       "children" : [ {
         "name" : "test_agenda_is_accessible[chromium]",
-        "uid" : "976d3dcb6e5008fc",
+        "uid" : "e54e3b21c6301512",
         "parentUid" : "67c2e60a0bc1cd993a46f10134029f5c",
         "status" : "failed",
         "time" : {
-          "start" : 1739796980595,
-          "stop" : 1739797002679,
-          "duration" : 22084
+          "start" : 1739846904305,
+          "stop" : 1739846925957,
+          "duration" : 21652
         },
         "flaky" : false,
         "newFailed" : false,
