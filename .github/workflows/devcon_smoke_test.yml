@@ -78,7 +78,7 @@ jobs:
         if: always()
         run: |
           mkdir -p reports/allure-report/history
-          cp -r reports/allure-results/history reports/allure-report/
+          mv -f reports/allure-results/history/* reports/allure-report/history/ || true
 
       # --- 🚀 Allure riport on GitHub Pages ---
       - name: Allure riport on GitHub Pages
