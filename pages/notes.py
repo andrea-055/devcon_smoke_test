@@ -18,7 +18,7 @@ class Notes(Page):
         self.page.goto(self.URL)
 
     def click_new_note(self):
-        self.new.note.button.click()
+        self.new_note_button.click()
 
     def write_note(self, text: str):
         self.note.input.click()
