@@ -1,12 +1,12 @@
 {
-  "uid" : "14364d8b1f675aa3",
+  "uid" : "9836c9ea711cfe65",
   "name" : "test_base_url",
   "fullName" : "tests.test_config#test_base_url",
   "historyId" : "2e913e16e2c8b3ecf06fc896c139c6b5",
   "time" : {
-    "start" : 1739933568147,
-    "stop" : 1739933568147,
-    "duration" : 0
+    "start" : 1739955117399,
+    "stop" : 1739955117400,
+    "duration" : 1
   },
   "status" : "passed",
   "flaky" : false,
@@ -14,8 +14,8 @@
   "beforeStages" : [ {
     "name" : "_verify_url",
     "time" : {
-      "start" : 1739933432598,
-      "stop" : 1739933432598,
+      "start" : 1739955054208,
+      "stop" : 1739955054208,
       "duration" : 0
     },
     "status" : "passed",
@@ -29,8 +29,8 @@
   }, {
     "name" : "base_url",
     "time" : {
-      "start" : 1739933568146,
-      "stop" : 1739933568146,
+      "start" : 1739955117399,
+      "stop" : 1739955117399,
       "duration" : 0
     },
     "status" : "passed",
@@ -44,8 +44,8 @@
   }, {
     "name" : "delete_output_dir",
     "time" : {
-      "start" : 1739933432598,
-      "stop" : 1739933432598,
+      "start" : 1739955054208,
+      "stop" : 1739955054208,
       "duration" : 0
     },
     "status" : "passed",
@@ -59,8 +59,8 @@
   }, {
     "name" : "pytestconfig",
     "time" : {
-      "start" : 1739933432598,
-      "stop" : 1739933432598,
+      "start" : 1739955054207,
+      "stop" : 1739955054207,
       "duration" : 0
     },
     "status" : "passed",
@@ -76,9 +76,9 @@
     "status" : "passed",
     "steps" : [ ],
     "attachments" : [ {
-      "uid" : "ec8cad70d4edb1bf",
+      "uid" : "3a6f4893c66ac533",
       "name" : "stdout",
-      "source" : "ec8cad70d4edb1bf.txt",
+      "source" : "3a6f4893c66ac533.txt",
       "type" : "text/plain",
       "size" : 37
     } ],
@@ -97,10 +97,10 @@
     "value" : "test_config"
   }, {
     "name" : "host",
-    "value" : "fv-az1316-159"
+    "value" : "fv-az1390-170"
   }, {
     "name" : "thread",
-    "value" : "6244-MainThread"
+    "value" : "6262-MainThread"
   }, {
     "name" : "framework",
     "value" : "pytest"
@@ -124,6 +124,6 @@
     "categories" : [ ],
     "tags" : [ ]
   },
-  "source" : "14364d8b1f675aa3.json",
+  "source" : "9836c9ea711cfe65.json",
   "parameterValues" : [ ]
 }

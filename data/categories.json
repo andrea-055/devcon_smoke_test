@@ -6,13 +6,13 @@
       "name" : "AssertionError: Locator expected to be visible\nActual value: <element(s) not found> \nCall log:\n  - LocatorAssertions.to_be_visible with timeout 20000ms\n  -   - waiting for locator(\".agenda-item__main__content__title\").filter(has=get_by_text(\"Lobby\"))",
       "children" : [ {
         "name" : "test_agenda_is_accessible[chromium]",
-        "uid" : "c8fc57f399672ff1",
+        "uid" : "397ad25bb88c4b9",
         "parentUid" : "67c2e60a0bc1cd993a46f10134029f5c",
         "status" : "failed",
         "time" : {
-          "start" : 1739933435515,
-          "stop" : 1739933459401,
-          "duration" : 23886
+          "start" : 1739955056911,
+          "stop" : 1739955078954,
+          "duration" : 22043
         },
         "flaky" : false,
         "newFailed" : false,
@@ -21,27 +21,6 @@
       "uid" : "67c2e60a0bc1cd993a46f10134029f5c"
     } ],
     "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
-  }, {
-    "name" : "Test defects",
-    "children" : [ {
-      "name" : "playwright._impl._errors.TimeoutError: Page.wait_for_function: Timeout 60000ms exceeded.",
-      "children" : [ {
-        "name" : "test_profile_creation_is_accessible_directly[chromium]",
-        "uid" : "d79267561da14e16",
-        "parentUid" : "b1204839c143120c6dd226777c4f0874",
-        "status" : "broken",
-        "time" : {
-          "start" : 1739933491580,
-          "stop" : 1739933555615,
-          "duration" : 64035
-        },
-        "flaky" : false,
-        "newFailed" : false,
-        "parameters" : [ "'chromium'" ]
-      } ],
-      "uid" : "b1204839c143120c6dd226777c4f0874"
-    } ],
-    "uid" : "bdbf199525818fae7a8651db9eafe741"
   } ],
   "name" : "categories"
 }
