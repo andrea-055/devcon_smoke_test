@@ -1,8 +1,9 @@
 [ {
-  "buildOrder" : 28,
-  "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/28",
+  "buildOrder" : 29,
+  "reportUrl" : "https://andrea-055.github.io/devcon_smoke_test/29",
   "reportName" : "Allure Report with history",
   "data" : {
-    "Product defects" : 1
+    "Product defects" : 1,
+    "Test defects" : 1
   }
 } ]
