@@ -7,12 +7,12 @@ class Notes(Page):
 
     def __init__(self, page: Page) -> None:
         self.page: Page = page
-        self.new_note_button = page.locator('.notes-page__button-text', has_text="New note")
+        self.new_note_button = page.locator('.action-button')
         self.note_input = page.locator(".full-note-page__input textarea")
         self.save_button = page.get_by_role("button", name="Save")
-        self.note_list = page.locator('.notes-page__note-items')  # Teljes jegyzetlista
-        self.note_items = page.locator('.note-item')  # Összes jegyzet
-        self.note_texts = page.locator('.note-item__extract')  # A jegyzetek tartalmának előnézete
+        self.note_list = page.locator('.notes-page__note-items')
+        self.note_items = page.locator('.note-item')  #
+        self.note_texts = page.locator('.note-item__extract')
 
     def open(self):
         self.page.goto(self.URL)

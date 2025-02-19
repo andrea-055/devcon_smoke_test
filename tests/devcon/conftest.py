@@ -2,6 +2,7 @@
 
 import os
 import pytest
+import allure
 from dotenv import load_dotenv
 from pathlib import Path
 from playwright.sync_api import Page
@@ -14,6 +15,22 @@ from pages.spaces import Spaces
 from pages.terms_and_conditions import *
 from pages.profile import *
 from pages.notes import Notes
+
+
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    """Sc created and attached."""
+    outcome = yield
+    report = outcome.get_result()
+
+    if report.when == "call":  # only at the end of the execution
+        page = item.funcargs.get("page", None)  # check "page" fixture
+        if page:
+            screenshot_path = f"reports/allure-results/screenshots/{item.name}_{report.outcome}.png"
+            page.screenshot(path=screenshot_path)
+            allure.attach.file(screenshot_path, name=f"{item.name}_screenshot", attachment_type=allure.attachment_type.PNG)
+            print(f"📸 Screenshot saved and attached: {screenshot_path}")
 
 # ------------------------------------------------------------
 #

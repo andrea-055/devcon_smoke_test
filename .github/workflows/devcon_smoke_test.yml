@@ -30,17 +30,40 @@ jobs:
           playwright install
           playwright install-deps
 
+      # ---Screenshot folder creation---
+      - name: Ensure screenshots folder exists
+        run: mkdir -p reports/allure-results/screenshots
+
+      # ---Save Allure history ---
+      - name: Restore previous Allure history
+        if: always()
+        run: |
+          mkdir -p reports/allure-results/history
+          if [ -d reports/allure-report/history ]; then
+            cp -r reports/allure-report/history reports/allure-results/
+          fi
+
       - name: Test run using Allure report
         run: |
           PYTEST_BASE_URL=https://devcon.buzz/ pytest --alluredir=reports/allure-results || true
 
       - name: Generate Allure report
-        uses: simple-elf/allure-report-action@v1
+        run: |
+          allure generate reports/allure-results -o reports/allure-report --clean
+
+      # --- 🔹Upload screenshots (Artifacts) ---
+      - name: Upload test screenshots
+        uses: actions/upload-artifact@v3
         with:
-          allure_results: reports/allure-results
-          allure_report: reports/allure-report
-          gh_pages: gh-pages
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: screenshots
+          path: reports/allure-results/screenshots
+
+      # ---  save Allure history  ---
+      - name: Save Allure history
+        if: always()
+        run: |
+          mkdir -p reports/allure-report/history
+          cp -r reports/allure-results/history reports/allure-report/
 
       - name: Allure riport on GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
