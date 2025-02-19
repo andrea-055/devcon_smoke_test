@@ -30,11 +30,18 @@ jobs:
           playwright install
           playwright install-deps
 
-      # ---Screenshot folder creation---
+      # ---  ---
+      - name: Install Allure CLI
+        run: |
+          sudo apt-add-repository universe
+          sudo apt update
+          sudo apt install -y allure
+
+      # --- 📸 Screenshotokhoz dir ---
       - name: Ensure screenshots folder exists
         run: mkdir -p reports/allure-results/screenshots
 
-      # ---Save Allure history ---
+      # --- 🔹 Allure history mentése ---
       - name: Restore previous Allure history
         if: always()
         run: |
@@ -51,14 +58,14 @@ jobs:
         run: |
           allure generate reports/allure-results -o reports/allure-report --clean
 
-      # --- 🔹Upload screenshots (Artifacts) ---
+      # --- 🔹 Screenshotok upload GitHub Actions (Artifacts) ---
       - name: Upload test screenshots
         uses: actions/upload-artifact@v4
         with:
           name: screenshots
           path: reports/allure-results/screenshots
 
-      # ---  save Allure history  ---
+      # --- Allure history  ---
       - name: Save Allure history
         if: always()
         run: |
