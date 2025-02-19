@@ -6,13 +6,13 @@
       "name" : "AssertionError: Locator expected to be visible\nActual value: <element(s) not found> \nCall log:\n  - LocatorAssertions.to_be_visible with timeout 20000ms\n  -   - waiting for locator(\".agenda-item__main__content__title\").filter(has=get_by_text(\"Lobby\"))",
       "children" : [ {
         "name" : "test_agenda_is_accessible[chromium]",
-        "uid" : "5e5061580b48847f",
+        "uid" : "4c40620abb359727",
         "parentUid" : "67c2e60a0bc1cd993a46f10134029f5c",
         "status" : "failed",
         "time" : {
-          "start" : 1739970843931,
-          "stop" : 1739970866482,
-          "duration" : 22551
+          "start" : 1739971245849,
+          "stop" : 1739971268385,
+          "duration" : 22536
         },
         "flaky" : false,
         "newFailed" : false,
@@ -24,22 +24,22 @@
   }, {
     "name" : "Test defects",
     "children" : [ {
-      "name" : "AttributeError: 'Notes' object has no attribute 'new'",
+      "name" : "playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\".notes-page__button-text\").filter(has_text=\"New note\")",
       "children" : [ {
         "name" : "test_create_and_save_note[chromium]",
-        "uid" : "381e345726c13b0f",
-        "parentUid" : "2c8c0d3468d230d4fc595b031dbd5dea",
+        "uid" : "5deadc14322b80e7",
+        "parentUid" : "467595452b92d9a87e95d2de5c25e240",
         "status" : "broken",
         "time" : {
-          "start" : 1739970868272,
-          "stop" : 1739970870675,
-          "duration" : 2403
+          "start" : 1739971271076,
+          "stop" : 1739971303527,
+          "duration" : 32451
         },
         "flaky" : false,
         "newFailed" : false,
         "parameters" : [ "'chromium'" ]
       } ],
-      "uid" : "2c8c0d3468d230d4fc595b031dbd5dea"
+      "uid" : "467595452b92d9a87e95d2de5c25e240"
     } ],
     "uid" : "bdbf199525818fae7a8651db9eafe741"
   } ],
