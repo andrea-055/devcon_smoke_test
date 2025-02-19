@@ -1,4 +1,4 @@
-# ez headless
+#  headless
 
 import os
 import pytest
@@ -13,16 +13,17 @@ from pages.profile_creation import *
 from pages.spaces import Spaces
 from pages.terms_and_conditions import *
 from pages.profile import *
+from pages.notes import Notes
 
 # ------------------------------------------------------------
-# Környezeti változók beolvasása
+#
 # ------------------------------------------------------------
 load_dotenv()
 
 
 @pytest.fixture(scope="session")
 def base_url():
-    """Fixture, amely az alapértelmezett környezeti változóból adja vissza az URL-t"""
+
     return os.getenv("PYTEST_BASE_URL", "https://devcon.buzz")
 
 
@@ -32,7 +33,7 @@ def base_url():
 
 @pytest.fixture(scope='function')
 def page(request, context, browser, base_url) -> Page:
-    """Létrehoz egy Playwright oldalt a tesztekhez"""
+
     reg_marker = request.node.get_closest_marker('registered')
     file_path = Path('.auth/storage.json')
 
@@ -48,7 +49,7 @@ def page(request, context, browser, base_url) -> Page:
 
 
 def create_auth_file(file_path):
-    """Létrehoz egy üres autentikációs fájlt"""
+
     Path('.auth').mkdir(parents=True, exist_ok=True)
     file = open(file_path, 'w+')
     file.write('')
@@ -56,7 +57,7 @@ def create_auth_file(file_path):
 
 
 def create_auth_content(browser, base_url):
-    """Létrehozza az autentikációs állapotot és elmenti a `.auth/storage.json`-be"""
+
     page = browser.new_page(base_url=base_url)
     page.goto('profilecreation')
     page.get_by_role('button', name='Start Building Your Community').click()
@@ -117,3 +118,7 @@ def agenda(page: Page):
 @pytest.fixture(scope='function')
 def spaces(page: Page):
     return Spaces(page)
+
+@pytest.fixture(scope="function")
+def notes(page):
+    return Notes(page)
