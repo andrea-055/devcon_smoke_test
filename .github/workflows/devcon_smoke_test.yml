@@ -30,31 +30,33 @@ jobs:
           playwright install
           playwright install-deps
 
+      #  Restore Allure history from artifacts
+      - name: Download Allure history
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-history
+          path: reports/allure-results/history
+
       # --- CLI manually ---
       - name: Install Allure CLI manually
         run: |
           mkdir -p ~/allure
           wget https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.tgz -O ~/allure/allure.tgz
           tar -xvzf ~/allure/allure.tgz -C ~/allure
-          echo "export PATH=$PATH:~/allure/allure-2.25.0/bin" >> ~/.bashrc
-          echo "export PATH=$PATH:~/allure/allure-2.25.0/bin" >> ~/.profile
-          echo "export PATH=$PATH:~/allure/allure-2.25.0/bin" >> ~/.bash_profile
-          source ~/.bashrc
-          source ~/.profile
-          source ~/.bash_profile
+          echo "export PATH=$HOME/allure/allure-2.25.0/bin:$PATH" >> $GITHUB_ENV  # 🔹 PATH beállítása (ÚJ)
 
       # --- mkdir ---
       - name: Ensure screenshots folder exists
         run: mkdir -p reports/allure-results/screenshots
 
-      # --- restore prev report ---
-      - name: Restore previous Allure history
-        if: always()
-        run: |
-          mkdir -p reports/allure-results/history
-          if [ -d reports/allure-report/history ]; then
-            cp -r reports/allure-report/history reports/allure-results/
-          fi
+      # removed
+      # - name: Restore previous Allure history
+      #   if: always()
+      #   run: |
+      #     mkdir -p reports/allure-results/history
+      #     if [ -d reports/allure-report/history ]; then
+      #       cp -r reports/allure-report/history reports/allure-results/
+      #     fi
 
       # --- run ---
       - name: Test run using Allure report
@@ -68,19 +70,24 @@ jobs:
           name: screenshots
           path: reports/allure-results/screenshots
 
-      # --- 📝 Allure riport generating using Allure CLI  ---
+      # ---  Allure riport generating using Allure CLI  ---
       - name: Generate Allure report
         run: |
-          ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report --clean
+          if [ ! -d reports/allure-report/history ]; then  # 🔹 Nem törlünk, ha van history (ÚJ)
+            ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report --clean
+          else
+            ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report
+          fi
 
-      # --- 🔹 save new Allure history-t ---
-      - name: Save Allure history
+      # Save Allure history to artifacts
+      - name: Upload Allure history
         if: always()
-        run: |
-          mkdir -p reports/allure-report/history
-          mv -f reports/allure-results/history/* reports/allure-report/history/ || true
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-history
+          path: reports/allure-report/history
 
-      # --- 🚀 Allure riport on GitHub Pages ---
+      # ---  Allure riport on GitHub Pages ---
       - name: Allure riport on GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
