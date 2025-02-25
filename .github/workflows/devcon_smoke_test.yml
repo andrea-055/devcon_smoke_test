@@ -30,12 +30,17 @@ jobs:
           playwright install
           playwright install-deps
 
-      #  Restore Allure history 
+      #  Restore Allure history
       - name: Download Allure history
         uses: actions/download-artifact@v4
         with:
           name: allure-history
           path: reports/allure-results/history
+
+      #  debug AF  
+      - name: Debug Downloaded Artifacts
+        if: always()
+        run: ls -la reports/allure-results/history || echo "No history downloaded!"
 
       # --- CLI manually ---
       - name: Install Allure CLI manually
@@ -64,7 +69,7 @@ jobs:
       # --- Generate Allure report ---
       - name: Generate Allure report
         run: |
-          if [ ! -d reports/allure-report/history ]; then  # ✅ Nem törlünk, ha van history
+          if [ ! -d reports/allure-report/history ]; then  
             ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report --clean
           else
             ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report
