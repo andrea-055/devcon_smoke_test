@@ -2,7 +2,7 @@ import pytest
 from datetime import datetime
 from pages.notes import Notes
 
-@pytest.mark.notes
+@pytest.mark.registered
 def test_create_and_save_note(notes: Notes):
     notes.open()
     notes.click_new_note()
