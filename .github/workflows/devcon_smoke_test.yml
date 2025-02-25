@@ -31,11 +31,11 @@ jobs:
           playwright install-deps
 
       #  Restore Allure history from artifacts
-      - name: Download Allure history
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-history
-          path: reports/allure-results/history
+      #- name: Download Allure history
+      #  uses: actions/download-artifact@v4
+       # with:
+        #  name: allure-history
+         # path: reports/allure-results/history
 
       # --- CLI manually ---
       - name: Install Allure CLI manually
@@ -79,6 +79,11 @@ jobs:
             ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report
           fi
 
+      - name: Debug Allure history
+        if: always()
+        run: |
+          ls -la reports/allure-report/history || echo "No history directory found!"
+          
       # Save Allure history to artifacts
       - name: Upload Allure history
         if: always()
