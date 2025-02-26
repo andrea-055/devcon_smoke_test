@@ -42,16 +42,16 @@ jobs:
       - name: Ensure required directories exist
         run: |
           mkdir -p reports/allure-results
-          mkdir -p reports/allure-report
-          mkdir -p reports/allure-report/history
+          mkdir -p reports/allure-results/history
           mkdir -p reports/allure-results/screenshots
+          mkdir -p reports/allure-report
 
-      # ✅ Restore Allure history from previous run
+      # ✅ Restore Allure history from previous run (letöltés a helyes helyre!)
       - name: Download Allure history
         uses: actions/download-artifact@v4
         with:
           name: allure-history
-          path: reports/allure-report/history
+          path: reports/allure-results/history
         continue-on-error: true
 
       # ✅ Debug Downloaded Allure history
@@ -59,7 +59,7 @@ jobs:
         if: always()
         run: |
           echo "📂 Checking downloaded Allure history:"
-          ls -la reports/allure-report/history || echo "⚠️ No history downloaded!"
+          ls -la reports/allure-results/history || echo "⚠️ No history downloaded!"
 
       # --- Test execution ---
       - name: Test run using Allure report
@@ -82,22 +82,22 @@ jobs:
             echo "⚠️ No previous history found, creating empty directory."
             mkdir -p reports/allure-results/history
           fi
-          ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report --clean
+          ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report
 
       # ✅ Debug Allure history after report generation
       - name: Debug Allure history after report generation
         if: always()
         run: |
           echo "📂 Checking Allure history directory in generated report:"
-          ls -la reports/allure-report/history || echo "⚠️ No history in generated report!"
+          ls -la reports/allure-results/history || echo "⚠️ No history in generated report!"
 
-      # ✅ Upload Allure history as artifact
+      # ✅ Upload Allure history as artifact (felülírja az előző verziót)
       - name: Upload Allure history
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
-          path: reports/allure-report/history
+          path: reports/allure-results/history
           if-no-files-found: warn
 
       # --- Publish Allure report to GitHub Pages ---
