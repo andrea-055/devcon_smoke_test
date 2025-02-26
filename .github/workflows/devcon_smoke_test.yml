@@ -52,14 +52,24 @@ jobs:
         with:
           name: allure-history
           path: reports/allure-report/history
+          merge-multiple: true
         continue-on-error: true
 
-      # ✅ Debug – 
+      # ✅ Debug –
       - name: Debug Downloaded Allure history
         if: always()
         run: |
           echo "📂 Checking downloaded Allure history:"
           ls -la reports/allure-report/history || echo "⚠️ No history downloaded!"
+
+      # --- Move history if exists ---
+      - name: Ensure history is moved to the correct location
+        if: always()
+        run: |
+          mkdir -p reports/allure-results/history
+          if [ -d reports/allure-report/history ]; then
+            cp -r reports/allure-report/history/* reports/allure-results/history/ || echo "⚠️ No history files to move!"
+          fi
 
       # --- Test execution ---
       - name: Test run using Allure report
@@ -76,11 +86,11 @@ jobs:
       # ✅ Generate Allure report with history
       - name: Generate Allure report
         run: |
-          if [ -d reports/allure-report/history ]; then
-            echo "✅ Found previous history, keeping it."
+          if [ -d reports/allure-results/history ]; then
+            echo "✅ Found previous history, preserving it."
           else
             echo "⚠️ No previous history found, creating empty directory."
-            mkdir -p reports/allure-report/history
+            mkdir -p reports/allure-results/history
           fi
           ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report --clean
 
