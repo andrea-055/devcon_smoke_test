@@ -55,21 +55,23 @@ jobs:
           merge-multiple: true
         continue-on-error: true
 
+      # ✅ Másoljuk át a history-t az új tesztfutás előtt
+      - name: Restore Allure history
+        run: |
+          if [ -d reports/allure-report/history ]; then
+            echo "✅ Found previous history, copying to allure-results."
+            mkdir -p reports/allure-results/history
+            cp -r reports/allure-report/history/* reports/allure-results/history/ || echo "⚠️ No history files found!"
+          else
+            echo "⚠️ No previous history found, skipping copy step."
+          fi
+
       # ✅ Debug –
       - name: Debug Downloaded Allure history
         if: always()
         run: |
           echo "📂 Checking downloaded Allure history:"
           ls -la reports/allure-report/history || echo "⚠️ No history downloaded!"
-
-      # --- Move history if exists ---
-      - name: Ensure history is moved to the correct location
-        if: always()
-        run: |
-          mkdir -p reports/allure-results/history
-          if [ -d reports/allure-report/history ]; then
-            cp -r reports/allure-report/history/* reports/allure-results/history/ || echo "⚠️ No history files to move!"
-          fi
 
       # --- Test execution ---
       - name: Test run using Allure report
