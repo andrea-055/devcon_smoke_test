@@ -30,73 +30,79 @@ jobs:
           playwright install
           playwright install-deps
 
-      #  Restore Allure history from artifacts
-      #- name: Download Allure history
-      #  uses: actions/download-artifact@v4
-       # with:
-        #  name: allure-history
-         # path: reports/allure-results/history
-
       # --- CLI manually ---
       - name: Install Allure CLI manually
         run: |
           mkdir -p ~/allure
           wget https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.tgz -O ~/allure/allure.tgz
           tar -xvzf ~/allure/allure.tgz -C ~/allure
-          echo "export PATH=$HOME/allure/allure-2.25.0/bin:$PATH" >> $GITHUB_ENV  # 🔹 PATH beállítása (ÚJ)
+          echo "export PATH=$HOME/allure/allure-2.25.0/bin:$PATH" >> $GITHUB_ENV  # 🔹 PATH beállítása
 
-      # --- mkdir ---
-      - name: Ensure screenshots folder exists
-        run: mkdir -p reports/allure-results/screenshots
+      # check if cli is installed
+      - name: Check Allure CLI Installation
+        run: |
+          ~/allure/allure-2.25.0/bin/allure --version || echo "⚠️ Allure is not installed correctly!"
 
-      # removed
+      # --- Ensure necessary directories exist ---
+      - name: Ensure required directories exist
+        run: |
+          mkdir -p reports/allure-results
+          mkdir -p reports/allure-results/history
+          mkdir -p reports/allure-report
+          mkdir -p reports/allure-report/history
+          mkdir -p reports/allure-results/screenshots
+
+      # ✅ Restore Allure history from previous run (if available)
       - name: Download Allure history
         uses: actions/download-artifact@v4
         with:
           name: allure-history
           path: reports/allure-results/history
+        continue-on-error: true
 
-      # --- run ---
+      # --- Test execution ---
       - name: Test run using Allure report
         run: |
           PYTEST_BASE_URL=https://devcon.buzz/ pytest --alluredir=reports/allure-results || true
 
-      # --- upload sc to GitHub Actions-be (Artifacts) ---
+      # --- Upload screenshots (GitHub Artifacts) ---
       - name: Upload test screenshots
         uses: actions/upload-artifact@v4
         with:
           name: screenshots
           path: reports/allure-results/screenshots
 
-      # ---  Allure riport generating using Allure CLI  ---
+      # ✅ Generate Allure report with history
       - name: Generate Allure report
         run: |
-          if [ ! -d reports/allure-report/history ]; then  # 🔹 no clear
-            ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report --clean
-          else
+          if [ -d reports/allure-results/history ]; then
+            echo "✅ Found previous history, preserving it."
             ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report
+          else
+            echo "⚠️ No previous history found, generating clean report."
+            ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report --clean
           fi
 
+      # check if CLI generates the report
       - name: Debug Allure report contents
         if: always()
         run: |
-          ls -la reports/allure-report || echo "No allure-report directory found!"
+          echo "📂 Checking Allure report directory:"
+          ls -la reports/allure-report || echo "⚠️ No allure-report directory found!"
+          echo "📂 Checking Allure history directory:"
+          ls -la reports/allure-report/history || echo "⚠️ No history directory found!"
 
-      - name: Debug Allure history
-        if: always()
-        run: |
-          ls -la reports/allure-report/history || echo "No history directory found!"
-
-      # Save Allure history to artifacts
+      # if history exists upload it as artifact
       - name: Upload Allure history
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
           path: reports/allure-report/history
+          if-no-files-found: warn  
 
-      # ---  Allure riport on GitHub Pages ---
-      - name: Allure riport on GitHub Pages
+      # --- public Allure riport on GitHub Pages---
+      - name: Allure report on GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
