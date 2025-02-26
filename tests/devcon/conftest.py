@@ -41,7 +41,7 @@ load_dotenv()
 @pytest.fixture(scope="session")
 def base_url():
 
-    return os.getenv("PYTEST_BASE_URL", "https://test.devcon.buzz")
+    return os.getenv("PYTEST_BASE_URL", "https://devcon.buzz")
 
 
 # ------------------------------------------------------------
