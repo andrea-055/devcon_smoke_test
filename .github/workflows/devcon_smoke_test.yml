@@ -60,6 +60,12 @@ jobs:
           path: reports/allure-results/history
         continue-on-error: true
 
+      - name: Debug Downloaded Allure history
+        if: always()
+        run: |
+          echo "📂 Checking downloaded Allure history:"
+          ls -la reports/allure-results/history || echo "⚠️ No history downloaded!"
+
       # --- Test execution ---
       - name: Test run using Allure report
         run: |
@@ -82,6 +88,13 @@ jobs:
             echo "⚠️ No previous history found, generating clean report."
             ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report --clean
           fi
+
+      - name: Debug Allure history after report generation
+        if: always()
+        run: |
+          echo "📂 Checking Allure history directory in generated report:"
+          ls -la reports/allure-report/history || echo "⚠️ No history in generated report!"
+
 
       # check if CLI generates the report
       - name: Debug Allure report contents
