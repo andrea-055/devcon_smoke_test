@@ -36,44 +36,30 @@ jobs:
           mkdir -p ~/allure
           wget https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.tgz -O ~/allure/allure.tgz
           tar -xvzf ~/allure/allure.tgz -C ~/allure
-          echo "export PATH=$HOME/allure/allure-2.25.0/bin:$PATH" >> $GITHUB_ENV  # 🔹 PATH beállítása
-
-      # check if cli is installed
-      - name: Check Allure CLI Installation
-        run: |
-          ~/allure/allure-2.25.0/bin/allure --version || echo "⚠️ Allure is not installed correctly!"
+          echo "export PATH=$HOME/allure/allure-2.25.0/bin:$PATH" >> $GITHUB_ENV  
 
       # --- Ensure necessary directories exist ---
       - name: Ensure required directories exist
         run: |
           mkdir -p reports/allure-results
-          mkdir -p reports/allure-results/history
           mkdir -p reports/allure-report
           mkdir -p reports/allure-report/history
           mkdir -p reports/allure-results/screenshots
 
-      # ✅ Restore Allure history from previous run (if available)
+      # ✅ Restore Allure history from previous run
       - name: Download Allure history
         uses: actions/download-artifact@v4
         with:
           name: allure-history
-          path: reports/allure-results/history
+          path: reports/allure-report/history
         continue-on-error: true
 
-      - name: Ensure history is moved to the correct location
-        if: always()
-        run: |
-          mkdir -p reports/allure-results/history
-          mkdir -p reports/allure-report/history
-          echo "📂 Moving history to the correct location"
-          cp -r reports/allure-results/history/* reports/allure-report/history/ || echo "⚠️ No history files to move!"
-
-
+      # ✅ Debug – 
       - name: Debug Downloaded Allure history
         if: always()
         run: |
           echo "📂 Checking downloaded Allure history:"
-          ls -la reports/allure-results/history || echo "⚠️ No history downloaded!"
+          ls -la reports/allure-report/history || echo "⚠️ No history downloaded!"
 
       # --- Test execution ---
       - name: Test run using Allure report
@@ -90,33 +76,22 @@ jobs:
       # ✅ Generate Allure report with history
       - name: Generate Allure report
         run: |
-          if [ -d reports/allure-results/history ]; then
-            echo "✅ Found previous history, moving it to the correct location."
-            mkdir -p reports/allure-report/history
-            cp -r reports/allure-results/history/* reports/allure-report/history/ || echo "⚠️ No history files found to move!"
+          if [ -d reports/allure-report/history ]; then
+            echo "✅ Found previous history, keeping it."
           else
             echo "⚠️ No previous history found, creating empty directory."
             mkdir -p reports/allure-report/history
           fi
           ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report --clean
 
+      # ✅ Debug – R
       - name: Debug Allure history after report generation
         if: always()
         run: |
           echo "📂 Checking Allure history directory in generated report:"
           ls -la reports/allure-report/history || echo "⚠️ No history in generated report!"
 
-
-      # check if CLI generates the report
-      - name: Debug Allure report contents
-        if: always()
-        run: |
-          echo "📂 Checking Allure report directory:"
-          ls -la reports/allure-report || echo "⚠️ No allure-report directory found!"
-          echo "📂 Checking Allure history directory:"
-          ls -la reports/allure-report/history || echo "⚠️ No history directory found!"
-
-      # if history exists upload it as artifact
+      # ✅ Upload Allure history as artifact
       - name: Upload Allure history
         if: always()
         uses: actions/upload-artifact@v4
@@ -125,7 +100,7 @@ jobs:
           path: reports/allure-report/history
           if-no-files-found: warn
 
-      # --- public Allure riport on GitHub Pages---
+      # --- Publish Allure report to GitHub Pages ---
       - name: Allure report on GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
