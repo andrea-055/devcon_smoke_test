@@ -35,8 +35,8 @@ jobs:
         run: |
           mkdir -p ~/allure
           wget https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.tgz -O ~/allure/allure.tgz
-          tar -xvzf ~/allure/allure.t2.25.0.tgz -C ~/allure
-          echo "export PATH=$HOME/allure/allure-2.25.0/bin:$PATH" >> $GITHUB_ENV  
+          tar -xvzf ~/allure/allure.tgz -C ~/allure
+          echo "export PATH=$HOME/allure/allure-2.25.0/bin:$PATH" >> $GITHUB_ENV
 
       # --- Ensure necessary directories exist ---
       - name: Ensure required directories exist
