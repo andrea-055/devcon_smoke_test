@@ -71,11 +71,16 @@ jobs:
       # ---  Allure riport generating using Allure CLI  ---
       - name: Generate Allure report
         run: |
-          if [ ! -d reports/allure-report/history ]; then  # 🔹 Nem törlünk, ha van history (ÚJ)
+          if [ ! -d reports/allure-report/history ]; then  # 🔹 no clear
             ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report --clean
           else
             ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report
           fi
+
+      - name: Debug Allure report contents
+        if: always()
+        run: |
+          ls -la reports/allure-report || echo "No allure-report directory found!"
 
       - name: Debug Allure history
         if: always()
