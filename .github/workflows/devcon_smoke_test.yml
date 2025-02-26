@@ -51,27 +51,28 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: allure-history
-          path: reports/allure-report/history
-          merge-multiple: true
+          path: reports/allure-results/history  # 🔹 Ide töltjük le, nem máshova!
         continue-on-error: true
 
-      # ✅ Másoljuk át a history-t az új tesztfutás előtt
-      - name: Restore Allure history
+      # ✅ Ensure history is in the correct location
+      - name: Ensure history is in the correct location
         run: |
-          if [ -d reports/allure-report/history ]; then
-            echo "✅ Found previous history, copying to allure-results."
-            mkdir -p reports/allure-results/history
-            cp -r reports/allure-report/history/* reports/allure-results/history/ || echo "⚠️ No history files found!"
+          if [ -d reports/allure-results/history ]; then
+            echo "✅ History exists, ensuring it's in the correct location."
           else
-            echo "⚠️ No previous history found, skipping copy step."
+            echo "⚠️ No history found, creating empty directory."
+            mkdir -p reports/allure-results/history
+          fi
+          if [ -d reports/allure-report/history ]; then
+            cp -r reports/allure-report/history/* reports/allure-results/history/ || echo "⚠️ No history files to move!"
           fi
 
-      # ✅ Debug –
+      # ✅ Debug Downloaded Allure history
       - name: Debug Downloaded Allure history
         if: always()
         run: |
           echo "📂 Checking downloaded Allure history:"
-          ls -la reports/allure-report/history || echo "⚠️ No history downloaded!"
+          ls -la reports/allure-results/history || echo "⚠️ No history downloaded!"
 
       # --- Test execution ---
       - name: Test run using Allure report
@@ -89,19 +90,19 @@ jobs:
       - name: Generate Allure report
         run: |
           if [ -d reports/allure-results/history ]; then
-            echo "✅ Found previous history, preserving it."
+            echo "✅ Found previous history, keeping it."
           else
             echo "⚠️ No previous history found, creating empty directory."
             mkdir -p reports/allure-results/history
           fi
           ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report --clean
 
-      # ✅ Debug – R
-      - name: Debug Allure history after report generation
+      # ✅ Debug Allure history before report generation
+      - name: Debug Allure history before report generation
         if: always()
         run: |
-          echo "📂 Checking Allure history directory in generated report:"
-          ls -la reports/allure-report/history || echo "⚠️ No history in generated report!"
+          echo "📂 Checking history before report generation:"
+          ls -la reports/allure-results/history || echo "⚠️ No history in allure-results!"
 
       # ✅ Upload Allure history as artifact
       - name: Upload Allure history
