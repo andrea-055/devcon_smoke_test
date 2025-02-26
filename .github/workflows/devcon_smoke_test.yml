@@ -30,91 +30,68 @@ jobs:
           playwright install
           playwright install-deps
 
+      #  Restore Allure history from artifacts
+      #- name: Download Allure history
+      #  uses: actions/download-artifact@v4
+       # with:
+        #  name: allure-history
+         # path: reports/allure-results/history
+
       # --- CLI manually ---
       - name: Install Allure CLI manually
         run: |
           mkdir -p ~/allure
           wget https://github.com/allure-framework/allure2/releases/download/2.25.0/allure-2.25.0.tgz -O ~/allure/allure.tgz
           tar -xvzf ~/allure/allure.tgz -C ~/allure
-          echo "export PATH=$HOME/allure/allure-2.25.0/bin:$PATH" >> $GITHUB_ENV  
+          echo "export PATH=$HOME/allure/allure-2.25.0/bin:$PATH" >> $GITHUB_ENV  # 🔹 PATH beállítása (ÚJ)
 
-      # --- Ensure necessary directories exist ---
-      - name: Ensure required directories exist
-        run: |
-          mkdir -p reports/allure-results
-          mkdir -p reports/allure-report
-          mkdir -p reports/allure-report/history
-          mkdir -p reports/allure-results/screenshots
+      # --- mkdir ---
+      - name: Ensure screenshots folder exists
+        run: mkdir -p reports/allure-results/screenshots
 
-      # ✅ Restore Allure history from previous run
+      # removed
       - name: Download Allure history
         uses: actions/download-artifact@v4
         with:
           name: allure-history
-          path: reports/allure-results/history  # 🔹 Ide töltjük le, nem máshova!
-        continue-on-error: true
+          path: reports/allure-results/history
 
-      # ✅ Ensure history is in the correct location
-      - name: Ensure history is in the correct location
-        run: |
-          if [ -d reports/allure-results/history ]; then
-            echo "✅ History exists, ensuring it's in the correct location."
-          else
-            echo "⚠️ No history found, creating empty directory."
-            mkdir -p reports/allure-results/history
-          fi
-          if [ -d reports/allure-report/history ]; then
-            cp -r reports/allure-report/history/* reports/allure-results/history/ || echo "⚠️ No history files to move!"
-          fi
-
-      # ✅ Debug Downloaded Allure history
-      - name: Debug Downloaded Allure history
-        if: always()
-        run: |
-          echo "📂 Checking downloaded Allure history:"
-          ls -la reports/allure-results/history || echo "⚠️ No history downloaded!"
-
-      # --- Test execution ---
+      # --- run ---
       - name: Test run using Allure report
         run: |
           PYTEST_BASE_URL=https://test.devcon.buzz/ pytest --alluredir=reports/allure-results || true
 
-      # --- Upload screenshots (GitHub Artifacts) ---
+      # --- upload sc to GitHub Actions-be (Artifacts) ---
       - name: Upload test screenshots
         uses: actions/upload-artifact@v4
         with:
           name: screenshots
           path: reports/allure-results/screenshots
 
-      # ✅ Generate Allure report with history
+      # ---  Allure riport generating using Allure CLI  ---
       - name: Generate Allure report
         run: |
-          if [ -d reports/allure-results/history ]; then
-            echo "✅ Found previous history, keeping it."
+          if [ ! -d reports/allure-report/history ]; then  # 🔹 Nem törlünk, ha van history (ÚJ)
+            ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report --clean
           else
-            echo "⚠️ No previous history found, creating empty directory."
-            mkdir -p reports/allure-results/history
+            ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report
           fi
-          ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report
 
-      # ✅ Debug Allure history before report generation
-      - name: Debug Allure history before report generation
+      - name: Debug Allure history
         if: always()
         run: |
-          echo "📂 Checking history before report generation:"
-          ls -la reports/allure-results/history || echo "⚠️ No history in allure-results!"
+          ls -la reports/allure-report/history || echo "No history directory found!"
 
-      # ✅ Upload Allure history as artifact
+      # Save Allure history to artifacts
       - name: Upload Allure history
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-history
           path: reports/allure-report/history
-          if-no-files-found: warn
 
-      # --- Publish Allure report to GitHub Pages ---
-      - name: Allure report on GitHub Pages
+      # ---  Allure riport on GitHub Pages ---
+      - name: Allure riport on GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
