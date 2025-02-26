@@ -77,7 +77,7 @@ jobs:
       # --- Test execution ---
       - name: Test run using Allure report
         run: |
-          PYTEST_BASE_URL=https://devcon.buzz/ pytest --alluredir=reports/allure-results || true
+          PYTEST_BASE_URL=https://test.devcon.buzz/ pytest --alluredir=reports/allure-results || true
 
       # --- Upload screenshots (GitHub Artifacts) ---
       - name: Upload test screenshots
@@ -95,7 +95,7 @@ jobs:
             echo "⚠️ No previous history found, creating empty directory."
             mkdir -p reports/allure-results/history
           fi
-          ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report --clean
+          ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report
 
       # ✅ Debug Allure history before report generation
       - name: Debug Allure history before report generation
