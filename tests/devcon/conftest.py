@@ -1,5 +1,3 @@
-#  headless
-
 import os
 import pytest
 import allure
@@ -16,33 +14,34 @@ from pages.terms_and_conditions import *
 from pages.profile import *
 from pages.notes import Notes
 
-
-
+# Hook a teszt riportok és metaadatok kezelésére
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
-    """Sc created and attached."""
+    """Screenshot készítése és környezet metaadat hozzáadása."""
     outcome = yield
     report = outcome.get_result()
 
-    if report.when == "call":  # only at the end of the execution
-        page = item.funcargs.get("page", None)  # check "page" fixture
+    if report.when == "call":  # Csak a teszt futtatása végén
+        page = item.funcargs.get("page", None)  # "page" fixture ellenőrzése
         if page:
+            # Screenshot készítése és csatolása
             screenshot_path = f"reports/allure-results/screenshots/{item.name}_{report.outcome}.png"
             page.screenshot(path=screenshot_path)
             allure.attach.file(screenshot_path, name=f"{item.name}_screenshot", attachment_type=allure.attachment_type.PNG)
             print(f"📸 Screenshot saved and attached: {screenshot_path}")
 
+        # Környezet metaadat hozzáadása az Allure-hoz
+        env_url = os.getenv("PYTEST_BASE_URL", "unknown")
+        allure.dynamic.label("environment", env_url)
+
 # ------------------------------------------------------------
-#
+# Környezeti változók betöltése
 # ------------------------------------------------------------
 load_dotenv()
 
-
 @pytest.fixture(scope="session")
 def base_url():
-
     return os.getenv("PYTEST_BASE_URL", "https://devcon.buzz")
-
 
 # ------------------------------------------------------------
 # Playwright fixtures
@@ -50,7 +49,6 @@ def base_url():
 
 @pytest.fixture(scope='function')
 def page(request, context, browser, base_url) -> Page:
-
     reg_marker = request.node.get_closest_marker('registered')
     file_path = Path('.auth/storage.json')
 
@@ -64,24 +62,19 @@ def page(request, context, browser, base_url) -> Page:
 
     return context.new_page()
 
-
 def create_auth_file(file_path):
-
     Path('.auth').mkdir(parents=True, exist_ok=True)
     file = open(file_path, 'w+')
     file.write('')
     file.close()
 
-
 def create_auth_content(browser, base_url):
-
     page = browser.new_page(base_url=base_url)
     page.goto('profilecreation')
     page.get_by_role('button', name='Start Building Your Community').click()
     page.wait_for_url('home')
     page.context.storage_state(path='.auth/storage.json')
     page.close()
-
 
 # ------------------------------------------------------------
 # DevCon Page Fixtures
@@ -91,46 +84,37 @@ def create_auth_content(browser, base_url):
 def home(page):
     return Home(page)
 
-
 @pytest.fixture(scope='function')
 def onboard_join(page: Page):
     return Onboard_Join(page)
-
 
 @pytest.fixture(scope='function')
 def onboard_discuss(page: Page):
     return Onboard_Discuss(page)
 
-
 @pytest.fixture(scope='function')
 def onboard_swarm(page: Page):
     return Onboard_Swarm(page)
-
 
 @pytest.fixture(scope='function')
 def onboard_stay(page: Page):
     return Onboard_Stay(page)
 
-
 @pytest.fixture(scope='function')
 def terms_and_conditions(page: Page):
     return Terms_And_Conditions(page)
-
 
 @pytest.fixture(scope='function')
 def profile_creation(page: Page):
     return Profile_Creation(page)
 
-
 @pytest.fixture(scope='function')
 def profile(page: Page):
     return Profile(page)
 
-
 @pytest.fixture(scope='function')
 def agenda(page: Page):
     return Agenda(page)
-
 
 @pytest.fixture(scope='function')
 def spaces(page: Page):
