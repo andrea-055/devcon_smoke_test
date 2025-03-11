@@ -6,7 +6,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:  # can be executed in GitHub Actions UI
+  workflow_dispatch:
 
 jobs:
   test:
@@ -46,7 +46,7 @@ jobs:
           mkdir -p reports/allure-results/screenshots
           mkdir -p reports/allure-report
 
-      # ✅ Restore Allure history from previous run (letöltés a helyes helyre!)
+      # ✅ Restore Allure history
       - name: Download Allure history
         uses: actions/download-artifact@v4
         with:
@@ -54,17 +54,27 @@ jobs:
           path: reports/allure-results/history
         continue-on-error: true
 
-      # ✅ Debug Downloaded Allure history
-      - name: Debug Downloaded Allure history
+      # ✅ Debug Allure history
+      - name: Debug Allure history
         if: always()
         run: |
           echo "📂 Checking downloaded Allure history:"
           ls -la reports/allure-results/history || echo "⚠️ No history downloaded!"
 
-      # --- Test execution ---
-      - name: Test run using Allure report
+      # --- 🟢 Test execution on PRODUCTION ---
+      - name: Test run on PRODUCTION
         run: |
           PYTEST_BASE_URL=https://devcon.buzz/ pytest --alluredir=reports/allure-results || true
+
+      # --- 🟠 Test execution on Test ---
+      - name: Test run on TEST
+        run: |
+          PYTEST_BASE_URL=https://test.devcon.buzz/ pytest --alluredir=reports/allure-results || true
+
+      # --- 🔵 Test execution on Limo ---
+      - name: Test run on Limo
+        run: |
+          PYTEST_BASE_URL=https://devconbuzz.eth.link/ pytest --alluredir=reports/allure-results || true
 
       # --- Upload screenshots (GitHub Artifacts) ---
       - name: Upload test screenshots
@@ -91,7 +101,7 @@ jobs:
           echo "📂 Checking Allure history directory in generated report:"
           ls -la reports/allure-results/history || echo "⚠️ No history in generated report!"
 
-      # ✅ Upload Allure history as artifact (felülírja az előző verziót)
+      # ✅ Upload Allure history as artifact
       - name: Upload Allure history
         if: always()
         uses: actions/upload-artifact@v4
