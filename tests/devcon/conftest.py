@@ -21,7 +21,9 @@ load_dotenv()
 @pytest.fixture(autouse=True, scope="function")
 def set_environment_label():
     env_url = os.getenv("PYTEST_BASE_URL", "unknown")
-    allure.dynamic.label("environment", env_url)
+    allure.dynamic.label("environment", env_url)  # Címke a tesztekhez
+    # Explicit környezetváltozó hozzáadása az Allure-hoz
+    allure.environment("base_url", env_url)
     yield  # Teszt futtatása után visszaadja a vezérlést
 
 # Hook a teszt riportok és screenshotok kezelésére
