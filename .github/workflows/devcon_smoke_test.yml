@@ -82,16 +82,19 @@ jobs:
           ls -la reports/allure-results/prod/history || echo "⚠️ No history downloaded for prod!"
 
       # --- Teszt futtatása minden környezeten ---
-      - name: Run Smoke Tests on test.devcon.buzz
+      - name: Debug PYTEST_BASE_URL for test.devcon.buzz
         run: |
+          echo "PYTEST_BASE_URL is set to: $PYTEST_BASE_URL"
           PYTEST_BASE_URL=https://test.devcon.buzz/ pytest --alluredir=reports/allure-results/test || true
 
-      - name: Run Smoke Tests on devconbuzz.eth.link
+      - name: Debug PYTEST_BASE_URL for devconbuzz.eth.link
         run: |
+          echo "PYTEST_BASE_URL is set to: $PYTEST_BASE_URL"
           PYTEST_BASE_URL=https://devconbuzz.eth.link/ pytest --alluredir=reports/allure-results/eth || true
 
-      - name: Run Smoke Tests on devcon.buzz
+      - name: Debug PYTEST_BASE_URL for devcon.buzz
         run: |
+          echo "PYTEST_BASE_URL is set to: $PYTEST_BASE_URL"
           PYTEST_BASE_URL=https://devcon.buzz/ pytest --alluredir=reports/allure-results/prod || true
 
       # --- Screenshotok feltöltése ---

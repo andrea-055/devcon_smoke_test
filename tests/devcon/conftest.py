@@ -14,10 +14,20 @@ from pages.terms_and_conditions import *
 from pages.profile import *
 from pages.notes import Notes
 
-# Hook a teszt riportok és metaadatok kezelésére
+# Környezeti változók betöltése
+load_dotenv()
+
+# Fixture az Allure environment metaadat beállításához
+@pytest.fixture(autouse=True, scope="function")
+def set_environment_label():
+    env_url = os.getenv("PYTEST_BASE_URL", "unknown")
+    allure.dynamic.label("environment", env_url)
+    yield  # Teszt futtatása után visszaadja a vezérlést
+
+# Hook a teszt riportok és screenshotok kezelésére
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
-    """Screenshot készítése és környezet metaadat hozzáadása."""
+    """Screenshot készítése."""
     outcome = yield
     report = outcome.get_result()
 
@@ -30,23 +40,11 @@ def pytest_runtest_makereport(item, call):
             allure.attach.file(screenshot_path, name=f"{item.name}_screenshot", attachment_type=allure.attachment_type.PNG)
             print(f"📸 Screenshot saved and attached: {screenshot_path}")
 
-        # Környezet metaadat hozzáadása az Allure-hoz
-        env_url = os.getenv("PYTEST_BASE_URL", "unknown")
-        allure.dynamic.label("environment", env_url)
-
-# ------------------------------------------------------------
-# Környezeti változók betöltése
-# ------------------------------------------------------------
-load_dotenv()
-
 @pytest.fixture(scope="session")
 def base_url():
     return os.getenv("PYTEST_BASE_URL", "https://devcon.buzz")
 
-# ------------------------------------------------------------
 # Playwright fixtures
-# ------------------------------------------------------------
-
 @pytest.fixture(scope='function')
 def page(request, context, browser, base_url) -> Page:
     reg_marker = request.node.get_closest_marker('registered')
@@ -76,10 +74,7 @@ def create_auth_content(browser, base_url):
     page.context.storage_state(path='.auth/storage.json')
     page.close()
 
-# ------------------------------------------------------------
 # DevCon Page Fixtures
-# ------------------------------------------------------------
-
 @pytest.fixture(scope='function')
 def home(page):
     return Home(page)
