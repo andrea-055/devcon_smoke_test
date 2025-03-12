@@ -2,14 +2,14 @@ name: Devcon Smoke Test
 
 on:
   schedule:
-    - cron: '0 2 * * *'  # Minden nap 2:00-kor fut
+    - cron: '0 2 * * *'  # It runs every day at 2 a.m.
   push:
     branches:
       - main
-  workflow_dispatch:
+  workflow_dispatch:  # can be executed in GitHub Actions UI
 
 jobs:
-  smoke-test:
+  test:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -30,6 +30,7 @@ jobs:
           playwright install
           playwright install-deps
 
+      # --- CLI manually ---
       - name: Install Allure CLI manually
         run: |
           mkdir -p ~/allure
@@ -37,120 +38,71 @@ jobs:
           tar -xvzf ~/allure/allure.tgz -C ~/allure
           echo "export PATH=$HOME/allure/allure-2.25.0/bin:$PATH" >> $GITHUB_ENV
 
-      # Környezetenkénti mappák létrehozása
+      # --- Ensure necessary directories exist ---
       - name: Ensure required directories exist
         run: |
-          mkdir -p reports/allure-results/test/history
-          mkdir -p reports/allure-results/test/screenshots
-          mkdir -p reports/allure-results/eth/history
-          mkdir -p reports/allure-results/eth/screenshots
-          mkdir -p reports/allure-results/prod/history
-          mkdir -p reports/allure-results/prod/screenshots
+          mkdir -p reports/allure-results
+          mkdir -p reports/allure-results/history
+          mkdir -p reports/allure-results/screenshots
           mkdir -p reports/allure-report
 
-      # --- History letöltése minden környezethez ---
-      - name: Download Allure history for test.devcon.buzz
+      # ✅ Restore Allure history from previous run (letöltés a helyes helyre!)
+      - name: Download Allure history
         uses: actions/download-artifact@v4
         with:
-          name: allure-history-test
-          path: reports/allure-results/test/history
+          name: allure-history
+          path: reports/allure-results/history
         continue-on-error: true
 
-      - name: Download Allure history for devconbuzz.eth.link
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-history-eth
-          path: reports/allure-results/eth/history
-        continue-on-error: true
-
-      - name: Download Allure history for devcon.buzz
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-history-prod
-          path: reports/allure-results/prod/history
-        continue-on-error: true
-
-      # --- Debug: Ellenőrzés a letöltött history-ra ---
+      # ✅ Debug Downloaded Allure history
       - name: Debug Downloaded Allure history
         if: always()
         run: |
-          echo "📂 Checking history for test.devcon.buzz:"
-          ls -la reports/allure-results/test/history || echo "⚠️ No history downloaded for test!"
-          echo "📂 Checking history for devconbuzz.eth.link:"
-          ls -la reports/allure-results/eth/history || echo "⚠️ No history downloaded for eth!"
-          echo "📂 Checking history for devcon.buzz:"
-          ls -la reports/allure-results/prod/history || echo "⚠️ No history downloaded for prod!"
+          echo "📂 Checking downloaded Allure history:"
+          ls -la reports/allure-results/history || echo "⚠️ No history downloaded!"
 
-      # --- Teszt futtatása minden környezeten ---
-      - name: Run Smoke Tests on test.devcon.buzz
+      # --- Test execution ---
+      - name: Test run using Allure report
         run: |
-          echo "PYTEST_BASE_URL is set to: $PYTEST_BASE_URL"
-          PYTEST_BASE_URL=https://test.devcon.buzz/ pytest --alluredir=reports/allure-results/test || true
+          PYTEST_BASE_URL=https://devcon.buzz/ pytest --alluredir=reports/allure-results || true
 
-      - name: Run Smoke Tests on devconbuzz.eth.link
-        run: |
-          echo "PYTEST_BASE_URL is set to: $PYTEST_BASE_URL"
-          PYTEST_BASE_URL=https://devconbuzz.eth.link/ pytest --alluredir=reports/allure-results/eth || true
-
-      - name: Run Smoke Tests on devcon.buzz
-        run: |
-          echo "PYTEST_BASE_URL is set to: $PYTEST_BASE_URL"
-          PYTEST_BASE_URL=https://devcon.buzz/ pytest --alluredir=reports/allure-results/prod || true
-
-      # --- Screenshotok feltöltése ---
+      # --- Upload screenshots (GitHub Artifacts) ---
       - name: Upload test screenshots
         uses: actions/upload-artifact@v4
         with:
           name: screenshots
-          path: reports/allure-results/*/screenshots
-        if: always()
+          path: reports/allure-results/screenshots
 
-      # --- Allure riport generálása (összes környezet együtt) ---
+      # ✅ Generate Allure report with history
       - name: Generate Allure report
         run: |
-          ~/allure/allure-2.25.0/bin/allure generate reports/allure-results/* -o reports/allure-report
-        if: always()
+          if [ -d reports/allure-results/history ]; then
+            echo "✅ Found previous history, keeping it."
+          else
+            echo "⚠️ No previous history found, creating empty directory."
+            mkdir -p reports/allure-results/history
+          fi
+          ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report
 
-      # --- History feltöltése minden környezethez ---
-      - name: Upload Allure history for test.devcon.buzz
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-history-test
-          path: reports/allure-results/test/history
-          if-no-files-found: warn
-        if: always()
-
-      - name: Upload Allure history for devconbuzz.eth.link
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-history-eth
-          path: reports/allure-results/eth/history
-          if-no-files-found: warn
-        if: always()
-
-      - name: Upload Allure history for devcon.buzz
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-history-prod
-          path: reports/allure-results/prod/history
-          if-no-files-found: warn
-        if: always()
-
-      # --- Debug: Ellenőrzés a generált history-ra ---
-      - name: Debug Generated Allure history
+      # ✅ Debug Allure history after report generation
+      - name: Debug Allure history after report generation
         if: always()
         run: |
-          echo "📂 Checking history for test.devcon.buzz after generation:"
-          ls -la reports/allure-results/test/history || echo "⚠️ No history generated for test!"
-          echo "📂 Checking history for devconbuzz.eth.link after generation:"
-          ls -la reports/allure-results/eth/history || echo "⚠️ No history generated for eth!"
-          echo "📂 Checking history for devcon.buzz after generation:"
-          ls -la reports/allure-results/prod/history || echo "⚠️ No history generated for prod!"
+          echo "📂 Checking Allure history directory in generated report:"
+          ls -la reports/allure-results/history || echo "⚠️ No history in generated report!"
 
-      # --- Allure riport publikálása GitHub Pages-re ---
+      # ✅ Upload Allure history as artifact
+      - name: Upload Allure history
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-history
+          path: reports/allure-results/history
+          if-no-files-found: warn
+
+      # --- Publish Allure report to GitHub Pages ---
       - name: Allure report on GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./reports/allure-report
-        if: always()
