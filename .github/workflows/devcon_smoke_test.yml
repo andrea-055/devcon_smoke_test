@@ -6,18 +6,21 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:  # can be executed in GitHub Actions UI
+  workflow_dispatch:  # Can be executed in GitHub Actions UI
 
 jobs:
   test:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    strategy:
+      matrix:
+        environment: ['Prod', 'ETH.limo']  # Environments to test
     steps:
       - name: Repository clone
         uses: actions/checkout@v4
 
-      - name: Install Python és Playwright
+      - name: Install Python and Playwright
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
@@ -39,70 +42,71 @@ jobs:
           echo "export PATH=$HOME/allure/allure-2.25.0/bin:$PATH" >> $GITHUB_ENV
 
       # --- Ensure necessary directories exist ---
-      - name: Ensure required directories exist
+      - name: Ensure required directories exist for ${{ matrix.environment }}
         run: |
-          mkdir -p reports/allure-results
-          mkdir -p reports/allure-results/history
-          mkdir -p reports/allure-results/screenshots
-          mkdir -p reports/allure-report
+          mkdir -p reports/allure-results-${{ matrix.environment }}
+          mkdir -p reports/allure-results-${{ matrix.environment }}/history
+          mkdir -p reports/allure-results-${{ matrix.environment }}/screenshots
+          mkdir -p reports/allure-report-${{ matrix.environment }}
 
-      # ✅ Restore Allure history from previous run (letöltés a helyes helyre!)
-      - name: Download Allure history
+      # ✅ Restore Allure history from previous run for ${{ matrix.environment }}
+      - name: Download Allure history for ${{ matrix.environment }}
         uses: actions/download-artifact@v4
         with:
-          name: allure-history
-          path: reports/allure-results/history
+          name: allure-history-${{ matrix.environment }}
+          path: reports/allure-results-${{ matrix.environment }}/history
         continue-on-error: true
 
       # ✅ Debug Downloaded Allure history
-      - name: Debug Downloaded Allure history
+      - name: Debug Downloaded Allure history for ${{ matrix.environment }}
         if: always()
         run: |
-          echo "📂 Checking downloaded Allure history:"
-          ls -la reports/allure-results/history || echo "⚠️ No history downloaded!"
+          echo "📂 Checking downloaded Allure history for ${{ matrix.environment }}:"
+          ls -la reports/allure-results-${{ matrix.environment }}/history || echo "⚠️ No history downloaded!"
 
       # --- Test execution ---
-      - name: Test run using Allure report
+      - name: Test run on ${{ matrix.environment }} using Allure report
         run: |
-          PYTEST_BASE_URL=https://devcon.buzz/ pytest --alluredir=reports/allure-results || true
+          PYTEST_BASE_URL=${{ matrix.environment == 'Prod' && 'https://devcon.buzz/' || 'https://devconbuzz.eth.limo/' }} pytest --alluredir=reports/allure-results-${{ matrix.environment }} || true
 
       # --- Upload screenshots (GitHub Artifacts) ---
-      - name: Upload test screenshots
+      - name: Upload test screenshots for ${{ matrix.environment }}
         uses: actions/upload-artifact@v4
         with:
-          name: screenshots
-          path: reports/allure-results/screenshots
+          name: screenshots-${{ matrix.environment }}
+          path: reports/allure-results-${{ matrix.environment }}/screenshots
 
       # ✅ Generate Allure report with history
-      - name: Generate Allure report
+      - name: Generate Allure report for ${{ matrix.environment }}
         run: |
-          if [ -d reports/allure-results/history ]; then
-            echo "✅ Found previous history, keeping it."
+          if [ -d reports/allure-results-${{ matrix.environment }}/history ]; then
+            echo "✅ Found previous history for ${{ matrix.environment }}, keeping it."
           else
-            echo "⚠️ No previous history found, creating empty directory."
-            mkdir -p reports/allure-results/history
+            echo "⚠️ No previous history found for ${{ matrix.environment }}, creating empty directory."
+            mkdir -p reports/allure-results-${{ matrix.environment }}/history
           fi
-          ~/allure/allure-2.25.0/bin/allure generate reports/allure-results -o reports/allure-report
+          ~/allure/allure-2.25.0/bin/allure generate reports/allure-results-${{ matrix.environment }} -o reports/allure-report-${{ matrix.environment }}
 
       # ✅ Debug Allure history after report generation
-      - name: Debug Allure history after report generation
+      - name: Debug Allure history after report generation for ${{ matrix.environment }}
         if: always()
         run: |
-          echo "📂 Checking Allure history directory in generated report:"
-          ls -la reports/allure-results/history || echo "⚠️ No history in generated report!"
+          echo "📂 Checking Allure history directory in generated report for ${{ matrix.environment }}:"
+          ls -la reports/allure-results-${{ matrix.environment }}/history || echo "⚠️ No history in generated report!"
 
       # ✅ Upload Allure history as artifact
-      - name: Upload Allure history
+      - name: Upload Allure history for ${{ matrix.environment }}
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-history
-          path: reports/allure-results/history
+          name: allure-history-${{ matrix.environment }}
+          path: reports/allure-results-${{ matrix.environment }}/history
           if-no-files-found: warn
 
       # --- Publish Allure report to GitHub Pages ---
-      - name: Allure report on GitHub Pages
+      - name: Publish Allure report to GitHub Pages for ${{ matrix.environment }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./reports/allure-report
+          publish_dir: ./reports/allure-report-${{ matrix.environment }}
+          destination_dir: ${{ matrix.environment }}
